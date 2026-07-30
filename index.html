@@ -21,6 +21,32 @@
 
   <main>
     <h1>Menú Principal</h1>
+
+    <aside aria-label="Perfil y cursos del estudiante">
+
+      <section id="perfil-usuario">
+        <h2>Perfil</h2>
+        <button type="button" aria-expanded="false" aria-controls="config-form">Configuración</button>
+
+        <img src="perfil.jpg" alt="Foto de perfil del usuario">
+        <p>Nombre Usuario</p>
+        <p>ID - 02102012012</p>
+        <p>"Biografía"</p>
+
+        <form id="config-form" aria-label="Formulario de configuración de perfil">
+          <label for="input-nombre">Nombre de usuario</label>
+          <input type="text" id="input-nombre" name="nombre" value="Nombre Usuario">
+
+          <label for="input-id">ID de estudiante</label>
+          <input type="text" id="input-id" name="idEstudiante" value="02102012012">
+
+          <label for="input-bio">Biografía</label>
+          <textarea id="input-bio" name="biografia" rows="3">Biografía</textarea>
+
+          <button type="submit">Guardar cambios</button>
+        </form>
+      </section>
+    </aside>
   </main>
 
   <footer>
