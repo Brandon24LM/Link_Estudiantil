@@ -2,131 +2,178 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LinkEstudiantil - Menú Principal</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <header>
-    <p>LinkEstudiantil</p>
+  <div class="app-container">
 
-    <nav aria-label="Navegación principal">
-      <a href="#menu">Menú</a>
-      <a href="#inicio" aria-current="page">Inicio</a>
-      <a href="#tutores">Tutores</a>
-    </nav>
+    <!-- ===================== HEADER ===================== -->
+    <header class="app-header">
+      <div class="logo">
+        <span class="logo-text">LinkEstudiantil</span>
+      </div>
 
-    <a href="#ayuda">Ayuda</a>
-    <a href="#perfil-usuario">Perfil</a>
-  </header>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <button class="nav-icon" type="button" aria-label="Menú">
+          <img src="images/icon-menu.svg" alt="">
+        </button>
+        <a class="nav-icon is-active" href="#inicio" aria-current="page" aria-label="Inicio">
+          <img src="images/icon-home.svg" alt="">
+        </a>
+        <a class="nav-icon" href="#tutores" aria-label="Tutores">
+          <img src="images/icon-contacts.svg" alt="">
+        </a>
+      </nav>
 
-  <main>
-    <h1>Menú Principal</h1>
+      <div class="header-actions">
+        <a class="nav-icon" href="#ayuda" aria-label="Ayuda">
+          <img src="images/icon-bell.svg" alt="">
+        </a>
+        <a class="nav-icon" href="#perfil-usuario" aria-label="Perfil">
+          <img src="images/icon-user.svg" alt="">
+        </a>
+      </div>
+    </header>
 
-    <aside aria-label="Perfil y cursos del estudiante">
+    <!-- ===================== MAIN ===================== -->
+    <main class="home-layout">
+      <h1 class="page-title">Menú Principal</h1>
 
-      <section id="perfil-usuario">
-        <h2>Perfil</h2>
-        <button type="button" aria-expanded="false" aria-controls="config-form">Configuración</button>
+      <div class="home-columns">
 
-        <img src="perfil.jpg" alt="Foto de perfil del usuario">
-        <p>Nombre Usuario</p>
-        <p>ID - 02102012012</p>
-        <p>"Biografía"</p>
+        <!-- ---------- COLUMNA IZQUIERDA: PERFIL + CURSOS ---------- -->
+        <aside class="profile-sidebar" aria-label="Perfil y cursos del estudiante">
 
-        <form id="config-form" aria-label="Formulario de configuración de perfil">
-          <label for="input-nombre">Nombre de usuario</label>
-          <input type="text" id="input-nombre" name="nombre" value="Nombre Usuario">
+          <section class="panel profile-panel" id="perfil-usuario">
+            <div class="panel-header">
+              <h2 class="panel-title">Perfil</h2>
+              <button class="btn btn-primary btn-sm" type="button" aria-expanded="false" aria-controls="config-form">Configuración</button>
+            </div>
 
-          <label for="input-id">ID de estudiante</label>
-          <input type="text" id="input-id" name="idEstudiante" value="02102012012">
+            <img class="profile-photo" src="images/perfil.jpg" alt="Foto de perfil del usuario">
+            <p class="profile-name">Nombre Usuario</p>
+            <p class="profile-id">ID - 02102012012</p>
+            <p class="profile-bio">"Biografía"</p>
 
-          <label for="input-bio">Biografía</label>
-          <textarea id="input-bio" name="biografia" rows="3">Biografía</textarea>
+            <form id="config-form" class="config-form" aria-label="Formulario de configuración de perfil">
+              <div class="form-group">
+                <label for="input-nombre">Nombre de usuario</label>
+                <input type="text" id="input-nombre" name="nombre" value="Nombre Usuario">
+              </div>
 
-          <button type="submit">Guardar cambios</button>
-        </form>
-      </section>
+              <div class="form-group">
+                <label for="input-id">ID de estudiante</label>
+                <input type="text" id="input-id" name="idEstudiante" value="02102012012">
+              </div>
 
-      <section aria-labelledby="tus-cursos-titulo">
-        <h2 id="tus-cursos-titulo">Tus Cursos</h2>
-        <a href="#todos-los-cursos">Ver todos</a>
+              <div class="form-group">
+                <label for="input-bio">Biografía</label>
+                <textarea id="input-bio" name="biografia" rows="3">Biografía</textarea>
+              </div>
 
-        <ul>
-          <li id="curso-ingles-1">
-            <img src="ingles.jpg" alt="Portada del curso Clase de Inglés">
-            <p>Clase de Inglés</p>
-            <p>Olivia Rodríguez</p>
-            <p>25% - En proceso</p>
-          </li>
+              <button class="btn btn-primary" type="submit">Guardar cambios</button>
+            </form>
+          </section>
 
-          <li id="curso-ingles-2">
-            <img src="ingles.jpg" alt="Portada del curso Clase de Inglés">
-            <p>Clase de Inglés</p>
-            <p>Olivia Rodríguez</p>
-            <p>100% - Completado</p>
-          </li>
-        </ul>
-      </section>
-    </aside>
+          <section class="panel courses-panel" aria-labelledby="tus-cursos-titulo">
+            <div class="panel-header">
+              <h2 class="panel-title" id="tus-cursos-titulo">Tus Cursos</h2>
+              <a class="link-more" href="#todos-los-cursos">Ver todos</a>
+            </div>
 
-    <section id="todos-los-cursos" aria-label="Tutores y materias disponibles">
+            <ul class="course-list">
+              <li class="card course-card" id="curso-ingles-1">
+                <img class="card-image" src="images/ingles.jpg" alt="Portada del curso Clase de Inglés">
+                <p class="card-title">Clase de Inglés</p>
+                <p class="card-subtitle">Olivia Rodríguez</p>
+                <p class="card-status">25% · En proceso</p>
+              </li>
 
-      <section aria-labelledby="tutores-titulo">
-        <h2 id="tutores-titulo">Tutores disponibles</h2>
-        <a href="#tutores">Ver más</a>
+              <li class="card course-card" id="curso-ingles-2">
+                <img class="card-image" src="images/ingles.jpg" alt="Portada del curso Clase de Inglés">
+                <p class="card-title">Clase de Inglés</p>
+                <p class="card-subtitle">Olivia Rodríguez</p>
+                <p class="card-status">100% · Completado</p>
+              </li>
+            </ul>
+          </section>
+        </aside>
 
-        <article>
-          <img src="tutor.jpg" alt="Tutora Olivia Rodríguez dando clase de inglés">
-          <p>Clase de Inglés</p>
-          <p>Olivia Rodríguez</p>
-        </article>
+        <!-- ---------- COLUMNA DERECHA: TUTORES + MATERIAS ---------- -->
+        <section class="discovery" id="todos-los-cursos" aria-label="Tutores y materias disponibles">
 
-        <article>
-          <img src="tutor.jpg" alt="Tutora Olivia Rodríguez dando clase de inglés">
-          <p>Clase de Inglés</p>
-          <p>Olivia Rodríguez</p>
-        </article>
+          <section class="panel tutors-panel" aria-labelledby="tutores-titulo">
+            <div class="panel-header">
+              <h2 class="panel-title" id="tutores-titulo">Tutores disponibles</h2>
+              <a class="link-more" href="#tutores">Ver más</a>
+            </div>
 
-        <article>
-          <img src="tutor.jpg" alt="Tutora Olivia Rodríguez dando clase de inglés">
-          <p>Clase de Inglés</p>
-          <p>Olivia Rodríguez</p>
-        </article>
-      </section>
+            <div class="card-grid">
+              <article class="card tutor-card">
+                <img class="card-image" src="images/tutor.jpg" alt="Tutora Olivia Rodríguez dando clase de inglés">
+                <p class="card-title">Clase de Inglés</p>
+                <p class="card-subtitle">Olivia Rodríguez</p>
+              </article>
 
-      <section aria-labelledby="materias-titulo">
-        <h2 id="materias-titulo">Materias</h2>
-        <a href="#materias">Ver más</a>
+              <article class="card tutor-card">
+                <img class="card-image" src="images/tutor.jpg" alt="Tutora Olivia Rodríguez dando clase de inglés">
+                <p class="card-title">Clase de Inglés</p>
+                <p class="card-subtitle">Olivia Rodríguez</p>
+              </article>
 
-        <article>
-          <img src="materia.jpg" alt="Portada de la materia Clase de Inglés">
-          <p>Clase de Inglés</p>
-          <p>Olivia Rodríguez</p>
-        </article>
+              <article class="card tutor-card">
+                <img class="card-image" src="images/tutor.jpg" alt="Tutora Olivia Rodríguez dando clase de inglés">
+                <p class="card-title">Clase de Inglés</p>
+                <p class="card-subtitle">Olivia Rodríguez</p>
+              </article>
+            </div>
+          </section>
 
-        <article>
-          <img src="materia.jpg" alt="Portada de la materia Clase de Inglés">
-          <p>Clase de Inglés</p>
-          <p>Olivia Rodríguez</p>
-        </article>
+          <section class="panel subjects-panel" aria-labelledby="materias-titulo">
+            <div class="panel-header">
+              <h2 class="panel-title" id="materias-titulo">Materias</h2>
+              <a class="link-more" href="#materias">Ver más</a>
+            </div>
 
-        <article>
-          <img src="materia.jpg" alt="Portada de la materia Clase de Inglés">
-          <p>Clase de Inglés</p>
-          <p>Olivia Rodríguez</p>
-        </article>
-      </section>
-    </section>
-  </main>
+            <div class="card-grid">
+              <article class="card subject-card">
+                <img class="card-image" src="images/materia.jpg" alt="Portada de la materia Clase de Inglés">
+                <p class="card-title">Clase de Inglés</p>
+                <p class="card-subtitle">Olivia Rodríguez</p>
+              </article>
 
-  <footer aria-label="Redes sociales">
-    <a href="#instagram">Instagram</a>
-    <a href="#facebook">Facebook</a>
-    <a href="#twitter">Twitter</a>
-    <a href="#linkedin">LinkedIn</a>
-    <a href="#youtube">YouTube</a>
-    <a href="#tiktok">TikTok</a>
-  </footer>
+              <article class="card subject-card">
+                <img class="card-image" src="images/materia.jpg" alt="Portada de la materia Clase de Inglés">
+                <p class="card-title">Clase de Inglés</p>
+                <p class="card-subtitle">Olivia Rodríguez</p>
+              </article>
+
+              <article class="card subject-card">
+                <img class="card-image" src="images/materia.jpg" alt="Portada de la materia Clase de Inglés">
+                <p class="card-title">Clase de Inglés</p>
+                <p class="card-subtitle">Olivia Rodríguez</p>
+              </article>
+            </div>
+          </section>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer" aria-label="Redes sociales">
+      <a class="social-link" href="#instagram">Instagram</a>
+      <a class="social-link" href="#facebook">Facebook</a>
+      <a class="social-link" href="#twitter">Twitter</a>
+      <a class="social-link" href="#linkedin">LinkedIn</a>
+      <a class="social-link" href="#youtube">YouTube</a>
+      <a class="social-link" href="#tiktok">TikTok</a>
+    </footer>
+
+  </div>
 
 </body>
 </html>
