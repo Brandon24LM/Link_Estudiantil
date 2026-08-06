@@ -12,8 +12,8 @@ propósito: Ver perfil pricipal del usuario.
 
 ## Integrantes
 - Brandon Lozano
-- Alissson Mediavilla
-- Cristhoper Villagomez
+- Alisson Mediavilla
+- Christopher Villagomez
 
 ## Tecnologías
 - HTML5

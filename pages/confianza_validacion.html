@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Confianza y Validación · LinkEstudiantil</title>
+<meta name="description" content="Panel de Confianza y Validación de LinkEstudiantil: búsqueda de docentes verificados, reseñas de estudiantes y gestión de verificación de cuenta." />
+<meta name="author" content="LinkEstudiantil" />
+<style>
+/* =========================================================
+   LinkEstudiantil — Confianza y Validación
+   Fiel al wireframe: Mobile / Tablet / Desktop
+   ========================================================= */
+
+:root {
+  --verde-titulo: #2BAD0A;
+  --azul-primario: #0064BC;
+  --negro-texto: #000000;
+  --rojo-error: #FF383C;
+  --gris-panel: #EAEAEA;
+  --gris-texto: #8A8A8A;
+  --blanco-bg: #FFFFFF;
+  --amarillo-estrella: #F5B301;
+
+  --radio-panel: 6px;
+  --radio-boton: 4px;
+  --foco: 3px solid #0064BC;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--negro-texto);
+  background: var(--blanco-bg);
+  line-height: 1.35;
+}
+
+img { max-width: 100%; display: block; }
+
+/* -------------------- Accesibilidad -------------------- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--azul-primario);
+  color: #fff;
+  padding: 0.75rem 1rem;
+  z-index: 100;
+  border-radius: 0 0 var(--radio-boton) 0;
+}
+.skip-link:focus { left: 0; }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible { outline: var(--foco); outline-offset: 2px; }
+
+/* -------------------- Encabezado / navegación superior --------------------
+   Oculto en móvil (ahí la navegación va en la barra inferior) */
+.topbar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.5rem;
+  border-bottom: 1px solid #ECECEC;
+}
+
+.topbar__grupo { display: flex; align-items: center; gap: 1.1rem; }
+
+.marca {
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+  text-decoration: none;
+  color: var(--negro-texto);
+  font-weight: 800;
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+.marca__icono { width: 22px; height: 22px; }
+.marca__link { color: var(--azul-primario); }
+.marca__estudiantil { color: var(--verde-titulo); }
+
+.icono-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
+  display: inline-flex;
+  border-radius: 50%;
+}
+.icono-btn:hover { background: #F2F2F2; }
+
+.icono {
+  width: 22px; height: 22px;
+  fill: none;
+  stroke: var(--negro-texto);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* -------------------- Contenido principal -------------------- */
+.contenedor {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1.1rem 1rem 2rem;
+}
+
+.encabezado {
+  margin-bottom: 1.1rem;
+}
+
+.encabezado__titulo {
+  color: var(--verde-titulo);
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin: 0 0 0.1rem;
+}
+
+.encabezado__subtitulo {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--radio-boton);
+  padding: 0.5rem 0.9rem;
+  font-weight: 700;
+  font-size: 0.72rem;
+  cursor: pointer;
+  color: #fff;
+}
+.boton--primario { background: var(--azul-primario); }
+.boton--primario:hover { background: #00539e; }
+.boton--peligro { background: var(--rojo-error); }
+.boton--peligro:hover { background: #d92f33; }
+.boton--bloque { width: 100%; }
+
+/* -------------------- Paneles grises -------------------- */
+.panel {
+  background: var(--gris-panel);
+  border-radius: var(--radio-panel);
+  padding: 0.9rem;
+}
+
+.panel__titulo {
+  font-size: 0.82rem;
+  font-weight: 800;
+  margin: 0 0 0.7rem;
+}
+
+/* -------------------- Tarjetas de curso -------------------- */
+.lista-cursos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.curso__portada {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 4px;
+  background:
+    radial-gradient(circle at 15% 20%, #2fbf71 0 10%, transparent 11%),
+    radial-gradient(circle at 85% 75%, #ffd23d 0 9%, transparent 10%),
+    linear-gradient(115deg, #23237a 0%, #2a2a8f 40%, #d63a3a 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.curso__portada::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(20deg, transparent 40%, rgba(255, 210, 61, 0.35) 42%, transparent 44%),
+    linear-gradient(-25deg, transparent 60%, rgba(255, 255, 255, 0.15) 62%, transparent 64%);
+}
+
+.curso__portada span {
+  position: relative;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: clamp(1rem, 5vw, 1.5rem);
+  color: #fff;
+  background: #d43b3b;
+  padding: 0.05em 0.35em;
+  transform: rotate(-3deg);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.02em;
+}
+
+.curso__categoria {
+  margin: 0.45rem 0 0.15rem;
+  font-size: 0.68rem;
+  color: var(--gris-texto);
+}
+
+.curso__docente {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.estrellas {
+  color: var(--amarillo-estrella);
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+}
+
+/* Acciones de reseña que en móvil viven dentro del panel Resultados */
+.acciones-resena {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 1rem;
+}
+
+/* -------------------- Visibilidad por punto de quiebre --------------------
+   Mobile: solo Resultados (con acciones de reseña embebidas).
+   Tablet:  + panel Mis reseñas.
+   Desktop: + Verificación + Cuenta Pro. */
+.panel--resenas,
+.panel--verificacion,
+.panel--pro {
+  display: none;
+}
+
+[data-solo-tablet] { display: none; }
+
+/* -------------------- Panel Mis reseñas -------------------- */
+.avatar {
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #6b4226, #8a5a3b);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.resenas__cabecera {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+}
+
+.resenas__cabecera .avatar { width: 72px; height: 72px; font-size: 1.1rem; }
+
+.resenas__nombre { margin: 0; font-size: 0.75rem; font-weight: 700; }
+
+.comentario {
+  background: var(--blanco-bg);
+  border-radius: var(--radio-boton);
+  padding: 0.9rem 0.7rem;
+  font-size: 0.72rem;
+  text-align: center;
+  color: #444;
+  width: 100%;
+}
+
+.resenas__comentarios {
+  list-style: none;
+  margin: 0.8rem 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.resenas__acciones {
+  display: grid;
+  gap: 0.55rem;
+}
+
+/* -------------------- Panel Verificación -------------------- */
+.verificacion__cuerpo {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.verificacion__botones { display: grid; gap: 0.55rem; }
+
+.verificacion__proceso {
+  display: grid;
+  gap: 0.6rem;
+  justify-items: center;
+}
+
+.icono-proceso { width: 84px; height: 84px; }
+
+/* -------------------- Panel Cuenta Pro -------------------- */
+.pro__cuerpo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+}
+
+.pro__cuerpo .avatar { width: 92px; height: 92px; font-size: 1.3rem; }
+
+.pro__nombre { margin: 0.2rem 0 0; font-size: 0.8rem; font-weight: 700; }
+
+.pro__botones {
+  display: grid;
+  gap: 0.55rem;
+  width: 100%;
+  margin-top: 0.7rem;
+}
+
+/* -------------------- Indicador de scroll -------------------- */
+.indicador-scroll {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.indicador-scroll svg { width: 20px; height: 20px; stroke: var(--negro-texto); }
+
+/* -------------------- Barra inferior (solo móvil) -------------------- */
+.tabbar {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0.7rem 0 0.4rem;
+  background: var(--blanco-bg);
+  border-top: 1px solid #ECECEC;
+}
+
+.tabbar__inicio {
+  width: 34px;
+  height: 4px;
+  border-radius: 2px;
+  background: #000;
+  margin: 0.4rem auto 0;
+}
+
+/* =========================================================
+   TABLET  (≥ 600px): navegación superior sin logo,
+   Resultados + Mis reseñas en dos columnas
+   ========================================================= */
+@media (min-width: 600px) {
+  .topbar { display: flex; }
+  .tabbar,
+  .tabbar__inicio { display: none; }
+  .indicador-scroll { margin-top: 1.4rem; }
+
+  .contenedor { padding: 1.4rem 1.75rem 2.5rem; }
+
+  .grid-paneles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+    align-items: start;
+  }
+
+  .panel--resenas { display: block; }
+  [data-solo-tablet] { display: block; }
+  .panel--resultados [data-solo-movil] { display: none; }
+}
+
+/* =========================================================
+   DESKTOP  (≥ 992px): logo visible, tres columnas,
+   Verificación aparece bajo Mis reseñas, Cuenta Pro visible
+   ========================================================= */
+@media (min-width: 992px) {
+  .marca { display: flex; }
+
+  .contenedor { padding: 1.6rem 2rem 3rem; }
+
+  .grid-paneles {
+    grid-template-columns: 1.05fr 1.2fr 0.85fr;
+    gap: 1.25rem;
+  }
+
+  .columna-media { display: grid; gap: 1.25rem; }
+
+  .panel--verificacion,
+  .panel--pro { display: block; }
+
+  [data-solo-tablet] { display: none; }
+
+  .resenas__cuerpo {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .resenas__cabecera { width: 96px; }
+
+  .resenas__comentarios { margin: 0; width: 100%; }
+  .comentario { height: 100%; display: flex; align-items: center; justify-content: center; }
+
+  .resenas__acciones { align-content: space-between; }
+  .resenas__acciones .boton { width: 150px; }
+
+  .verificacion__cuerpo {
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+  .verificacion__botones .boton { width: 190px; }
+  .verificacion__proceso .boton { width: 110px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#contenido-principal">Saltar al contenido principal</a>
+
+<!-- ============ NAVEGACIÓN SUPERIOR (tablet / desktop) ============ -->
+<header class="topbar">
+  <div class="topbar__grupo">
+    <a class="marca" href="../index.html" aria-label="LinkEstudiantil, ir al inicio">
+      <svg class="marca__icono" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 9l10-5 10 5-10 5-10-5z" stroke="#0064BC"></path>
+        <path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5" stroke="#2BAD0A"></path>
+      </svg>
+      <span><span class="marca__link">Link</span><span class="marca__estudiantil">Estudiantil</span></span>
+    </a>
+
+    <button type="button" class="icono-btn" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="menu-principal">
+      <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+
+    <nav aria-label="Navegación principal">
+      <ul id="menu-principal" style="list-style:none; display:flex; gap:1.1rem; margin:0; padding:0;">
+        <li>
+          <a href="../index.html" class="icono-btn" aria-label="Inicio">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 11l9-8 9 8"></path>
+              <path d="M5 10v10h14V10"></path>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="busqueda-tutores.html" class="icono-btn" aria-label="Buscar tutores">
+            <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M17 11a4 4 0 100-8"></path>
+              <path d="M1 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"></path>
+              <path d="M23 21v-2a4 4 0 00-3-3.87"></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="topbar__grupo">
+    <button type="button" class="icono-btn" aria-label="Actualizar validaciones">
+      <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M23 4v6h-6"></path>
+        <path d="M1 20v-6h6"></path>
+        <path d="M3.51 9a9 9 0 0114.85-3.36L23 10"></path>
+        <path d="M1 14l4.64 4.36A9 9 0 0020.49 15"></path>
+      </svg>
+    </button>
+    <a href="perfil.html" class="icono-btn" aria-label="Ver perfil de usuario">
+      <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="8" r="4"></circle>
+        <path d="M4 21c0-4 4-6 8-6s8 2 8 6"></path>
+      </svg>
+    </a>
+  </div>
+</header>
+
+<!-- ============ CONTENIDO PRINCIPAL ============ -->
+<main id="contenido-principal" class="contenedor">
+  <div class="encabezado">
+    <h1 class="encabezado__titulo">Confianza y Verificación</h1>
+    <h2 class="encabezado__subtitulo">Validación Docente</h2>
+    <button type="button" class="boton boton--primario">Búsqueda por Materia</button>
+  </div>
+
+  <div class="grid-paneles">
+    <!-- ---------- Resultados ---------- -->
+    <section class="panel panel--resultados" aria-labelledby="titulo-resultados">
+      <h3 class="panel__titulo" id="titulo-resultados">Resultados</h3>
+      <ul class="lista-cursos">
+        <li>
+          <span class="curso__portada" aria-hidden="true"><span>ENGLISH</span></span>
+          <p class="curso__categoria">Clase de Inglés</p>
+          <p class="curso__docente">
+            Olivia Rodríguez
+            <span class="estrellas" role="img" aria-label="5 de 5 estrellas">★★★★★</span>
+          </p>
+        </li>
+        <li>
+          <span class="curso__portada" aria-hidden="true"><span>ENGLISH</span></span>
+          <p class="curso__categoria">Clase de Inglés</p>
+          <p class="curso__docente">
+            Olivia Rodríguez
+            <span class="estrellas" role="img" aria-label="5 de 5 estrellas">★★★★★</span>
+          </p>
+        </li>
+        <li>
+          <span class="curso__portada" aria-hidden="true"><span>ENGLISH</span></span>
+          <p class="curso__categoria">Clase de Inglés</p>
+          <p class="curso__docente">
+            Olivia Rodríguez
+            <span class="estrellas" role="img" aria-label="5 de 5 estrellas">★★★★★</span>
+          </p>
+        </li>
+      </ul>
+
+      <!-- En móvil, las acciones de reseña viven dentro de Resultados (no hay panel aparte) -->
+      <div class="acciones-resena" data-solo-movil>
+        <button type="button" class="boton boton--primario boton--bloque">Agregar mi reseña</button>
+        <button type="button" class="boton boton--peligro boton--bloque">Más reseñas</button>
+      </div>
+    </section>
+
+    <!-- ---------- Columna central: Mis reseñas + Verificación ---------- -->
+    <div class="columna-media">
+      <section class="panel panel--resenas" aria-labelledby="titulo-resenas">
+        <h3 class="panel__titulo" id="titulo-resenas">Mis reseñas</h3>
+        <div class="resenas__cuerpo">
+          <div class="resenas__cabecera">
+            <div class="avatar" aria-hidden="true">OR</div>
+            <p class="resenas__nombre">Olivia Rodríguez</p>
+            <span class="estrellas" role="img" aria-label="5 de 5 estrellas">★★★★★</span>
+          </div>
+
+          <ul class="resenas__comentarios">
+            <li class="comentario">¡Muy buena clase!</li>
+            <li class="comentario" data-solo-tablet>¡Muy buena clase!</li>
+          </ul>
+
+          <div class="resenas__acciones">
+            <button type="button" class="boton boton--primario boton--bloque">Agregar mi reseña</button>
+            <button type="button" class="boton boton--peligro boton--bloque">Más reseñas</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel panel--verificacion" aria-labelledby="titulo-verificacion">
+        <h3 class="panel__titulo" id="titulo-verificacion">Verificación</h3>
+        <div class="verificacion__cuerpo">
+          <div class="verificacion__botones">
+            <button type="button" class="boton boton--primario boton--bloque">Verificar mi cuenta</button>
+            <button type="button" class="boton boton--primario boton--bloque">Crear usuario extra</button>
+            <button type="button" class="boton boton--primario boton--bloque">Eliminar cuenta</button>
+          </div>
+          <div class="verificacion__proceso">
+            <button type="button" class="boton boton--peligro">Proceso</button>
+            <svg class="icono-proceso" viewBox="0 0 100 100" aria-hidden="true">
+              <rect x="10" y="8" width="46" height="60" rx="3" fill="#fff" stroke="#333" stroke-width="2"></rect>
+              <line x1="18" y1="20" x2="48" y2="20" stroke="#333" stroke-width="2"></line>
+              <line x1="18" y1="28" x2="48" y2="28" stroke="#333" stroke-width="2"></line>
+              <line x1="18" y1="36" x2="40" y2="36" stroke="#333" stroke-width="2"></line>
+              <circle cx="26" cy="52" r="9" fill="#22c55e"></circle>
+              <path d="M22 52l3 3 6-6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+              <circle cx="66" cy="34" r="16" fill="none" stroke="#555" stroke-width="3"></circle>
+              <circle cx="66" cy="34" r="5" fill="#555"></circle>
+              <rect x="48" y="58" width="40" height="10" rx="2" fill="#4dd0e1"></rect>
+              <rect x="48" y="72" width="40" height="10" rx="2" fill="#f5b301"></rect>
+              <rect x="48" y="86" width="40" height="8" rx="2" fill="#d43b3b"></rect>
+            </svg>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ---------- Cuenta Pro ---------- -->
+    <section class="panel panel--pro" aria-labelledby="titulo-pro">
+      <h3 class="panel__titulo" id="titulo-pro">Cuenta Pro</h3>
+      <div class="pro__cuerpo">
+        <div class="avatar" aria-hidden="true">SG</div>
+        <p class="pro__nombre">Sarah Gómez</p>
+        <span class="estrellas" role="img" aria-label="5 de 5 estrellas" style="font-size:0.95rem;">★★★★★</span>
+        <div class="pro__botones">
+          <button type="button" class="boton boton--primario boton--bloque">Crear Clase</button>
+          <button type="button" class="boton boton--primario boton--bloque">Ver opciones</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="indicador-scroll" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </div>
+</main>
+
+<!-- ============ BARRA INFERIOR (solo móvil) ============ -->
+<nav class="tabbar" aria-label="Navegación móvil">
+  <button type="button" class="icono-btn" aria-label="Abrir menú">
+    <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </button>
+  <a href="../index.html" class="icono-btn" aria-label="Inicio" aria-current="page">
+    <svg class="icono" viewBox="0 0 24 24" aria-hidden="true" fill="#000">
+      <path d="M3 11l9-8 9 8" stroke="#000"></path>
+      <path d="M5 10v10h14V10" stroke="#000"></path>
+    </svg>
+  </a>
+  <a href="perfil.html" class="icono-btn" aria-label="Perfil">
+    <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="8" r="4"></circle>
+      <path d="M4 21c0-4 4-6 8-6s8 2 8 6"></path>
+    </svg>
+  </a>
+  <button type="button" class="icono-btn" aria-label="Actualizar validaciones">
+    <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M23 4v6h-6"></path>
+      <path d="M1 20v-6h6"></path>
+      <path d="M3.51 9a9 9 0 0114.85-3.36L23 10"></path>
+      <path d="M1 14l4.64 4.36A9 9 0 0020.49 15"></path>
+    </svg>
+  </button>
+</nav>
+<div class="tabbar__inicio" aria-hidden="true"></div>
+
+<footer class="sr-only"><p>LinkEstudiantil — Pantalla Confianza y Validación</p></footer>
+</body>
+</html>

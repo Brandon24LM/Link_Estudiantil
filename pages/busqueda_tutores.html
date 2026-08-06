@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar Tutores | LinkEstudiantil</title>
+  <meta name="description" content="Encuentra tutores disponibles por materia, nivel y modalidad en LinkEstudiantil.">
+  <meta name="author" content="LinkEstudiantil">
+  <link rel="stylesheet" href="../assets/buscar-tutores.css">
+</head>
+<body>
+
+  <!-- HEADER: identidad del sitio y navegación principal -->
+  <header class="site-header">
+    <div class="branding">
+      <img src="../assets/logo.png" alt="Logo de LinkEstudiantil" class="logo">
+      <span class="brand-name">LinkEstudiantil</span>
+    </div>
+
+    <!-- NAV: enlaces de navegación global, justificado porque agrupa los accesos principales del sitio -->
+    <nav class="main-nav" aria-label="Navegación principal">
+      <button type="button" class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+      <ul>
+        <li><a href="../index.html" aria-label="Ir al inicio">
+          <span aria-hidden="true">&#127968;</span><span class="visually-hidden">Inicio</span>
+        </a></li>
+        <li><a href="tutores.html" aria-label="Ver comunidad de tutores">
+          <span aria-hidden="true">&#128101;</span><span class="visually-hidden">Comunidad</span>
+        </a></li>
+        <li><a href="perfil.html" aria-label="Ver mi perfil">
+          <span aria-hidden="true">&#128100;</span><span class="visually-hidden">Perfil</span>
+        </a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN: contenido único y central de esta pantalla -->
+  <main id="main-content">
+
+    <!-- SECTION: bloque temático de búsqueda, distinto del bloque de resultados -->
+    <section class="search-section" aria-labelledby="search-title">
+      <h1 id="search-title">Buscar Tutores</h1>
+
+      <form class="search-form" action="#" method="get">
+        <fieldset>
+          <legend>Búsqueda por:</legend>
+
+          <div class="filter-field">
+            <label for="materia">Materia</label>
+            <select id="materia" name="materia">
+              <option value="">Selecciona una materia</option>
+              <option value="ingles">Inglés</option>
+              <option value="matematicas">Matemáticas</option>
+              <option value="programacion">Programación</option>
+            </select>
+          </div>
+
+          <div class="filter-field">
+            <label for="nivel">Nivel</label>
+            <select id="nivel" name="nivel">
+              <option value="">Selecciona un nivel</option>
+              <option value="basico">Básico</option>
+              <option value="intermedio">Intermedio</option>
+              <option value="avanzado">Avanzado</option>
+            </select>
+          </div>
+
+          <div class="filter-field">
+            <label for="modalidad">Modalidad</label>
+            <select id="modalidad" name="modalidad">
+              <option value="">Selecciona una modalidad</option>
+              <option value="virtual">Virtual</option>
+              <option value="presencial">Presencial</option>
+            </select>
+          </div>
+
+          <button type="submit">Buscar</button>
+        </fieldset>
+      </form>
+    </section>
+
+    <!-- SECTION: resultados generales de la búsqueda -->
+    <section class="results-section" aria-labelledby="results-title">
+      <h2 id="results-title">Resultados</h2>
+
+      <div class="tutor-grid">
+        <!-- ARTICLE: cada tarjeta de tutor es contenido autónomo y reutilizable -->
+        <article class="tutor-card">
+          <img src="../assets/tutor-placeholder.png" alt="Foto del tutor">
+          <p>Clase de</p>
+        </article>
+
+        <article class="tutor-card">
+          <img src="../assets/tutor-placeholder.png" alt="Foto del tutor">
+          <p>Clase de</p>
+        </article>
+
+        <article class="tutor-card">
+          <img src="../assets/tutor-placeholder.png" alt="Foto del tutor">
+          <p>Clase de</p>
+        </article>
+
+        <article class="tutor-card">
+          <img src="../assets/tutor-placeholder.png" alt="Foto del tutor ">
+          <p>Clase de</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION: subconjunto de resultados con disponibilidad inmediata, relacionado pero distinto de "Resultados" -->
+    <section class="available-now-section" aria-labelledby="available-title">
+      <h2 id="available-title">Tutores disponibles ¡AHORA!</h2>
+
+      <div class="tutor-grid">
+        <article class="tutor-card">
+          <img src="../assets/tutor-placeholder.png" alt="Foto del tutor de disponible ahora">
+          <p>Clase de</p>
+        </article>
+
+        <article class="tutor-card">
+          <img src="../assets/tutor-placeholder.png" alt="Foto del tutor de disponible ahora">
+          <p>Clase de</p>
+        </article>
+
+        <article class="tutor-card">
+          <img src="../assets/tutor-placeholder.png" alt="Foto del tutor de disponible ahora">
+          <p>Clase de</p>
+        </article>
+
+        <article class="tutor-card">
+          <img src="../assets/tutor-placeholder.png" alt="Foto del tutor de disponible ahora">
+          <p>Clase de</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER: información secundaria de cierre de página, redes sociales -->
+  <footer class="site-footer">
+    <nav aria-label="Redes sociales de LinkEstudiantil">
+      <ul class="social-links">
+        <li><a href="https://instagram.com" aria-label="LinkEstudiantil en Instagram">Instagram</a></li>
+        <li><a href="https://facebook.com" aria-label="LinkEstudiantil en Facebook">Facebook</a></li>
+        <li><a href="https://twitter.com" aria-label="LinkEstudiantil en Twitter">Twitter</a></li>
+        <li><a href="https://linkedin.com" aria-label="LinkEstudiantil en LinkedIn">LinkedIn</a></li>
+        <li><a href="https://youtube.com" aria-label="LinkEstudiantil en YouTube">YouTube</a></li>
+        <li><a href="https://tiktok.com" aria-label="LinkEstudiantil en TikTok">TikTok</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+</body>
+</html>

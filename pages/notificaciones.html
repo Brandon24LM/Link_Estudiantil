@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notificaciones - LinkEstudiantil</title>
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="app-header">
+      <div class="logo">
+        <img src="logo.png" alt="LinkEstudiantil">
+        <span>LinkEstudiantil</span>
+      </div>
+
+      <nav class="main-nav">
+        <button class="nav-icon" aria-label="Menú">
+          <img src="icon-menu.svg" alt="">
+        </button>
+        <button class="nav-icon" aria-label="Inicio">
+          <img src="icon-home.svg" alt="">
+        </button>
+        <button class="nav-icon" aria-label="Contactos">
+          <img src="icon-contacts.svg" alt="">
+        </button>
+      </nav>
+
+      <div class="header-actions">
+        <button class="nav-icon" aria-label="Notificaciones">
+          <img src="icon-bell.svg" alt="">
+        </button>
+        <button class="nav-icon" aria-label="Perfil">
+          <img src="icon-user.svg" alt="">
+        </button>
+      </div>
+    </header>
+
+    <h1 class="page-title">Notificaciones</h1>
+
+    <!-- ===================== MAIN LAYOUT ===================== -->
+    <main class="notifications-layout">
+
+      <!-- ---------- COLUMNA 1: LISTA DE MENSAJES ---------- -->
+      <section class="panel messages-panel">
+        <h2 class="panel-title">Mensajes</h2>
+
+        <ul class="messages-list">
+          <li class="message-item is-active">
+            <img class="avatar" src="avatar-alina.jpg" alt="Alina R.">
+            <div class="message-item-info">
+              <p class="message-sender">Alina R. <span class="message-time">Hace 5 min</span></p>
+              <p class="message-preview">Reviso tu tutoría</p>
+            </div>
+          </li>
+
+          <li class="message-item">
+            <img class="avatar" src="avatar-brandon.jpg" alt="Brandon Lozano">
+            <div class="message-item-info">
+              <p class="message-sender">Brandon Lozano <span class="message-time">Hace 1 hora</span></p>
+              <p class="message-preview">Material disponible</p>
+            </div>
+          </li>
+
+          <li class="message-item">
+            <img class="avatar" src="avatar-christopher.jpg" alt="Christopher Villagómez">
+            <div class="message-item-info">
+              <p class="message-sender">Christopher Villagómez <span class="message-time">2d</span></p>
+              <p class="message-preview">Clase Programada 26-08-2026</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ---------- COLUMNA 2: DETALLE DEL MENSAJE ---------- -->
+      <section class="panel message-detail-panel">
+        <header class="message-detail-header">
+          <img class="avatar" src="avatar-alina.jpg" alt="Alina R.">
+          <div>
+            <p class="message-sender">Alina R.</p>
+            <p class="message-time">Hace 5 min</p>
+          </div>
+        </header>
+
+        <div class="message-body">
+          <p>Hola, Recuerda recuerda revisar la tutoría</p>
+        </div>
+
+        <div class="message-attachment">
+          <p class="attachment-label">Archivo Adjunto</p>
+          <div class="attachment-file">
+            <img class="file-icon" src="icon-pdf.svg" alt="PDF">
+            <div class="file-info">
+              <p class="file-name">Quimica_Tutoria</p>
+              <p class="file-meta">PDF - 223 KB</p>
+            </div>
+            <button class="file-download" aria-label="Descargar">
+              <img src="icon-download.svg" alt="">
+            </button>
+          </div>
+        </div>
+
+        <div class="message-actions">
+          <button class="btn btn-primary">Responder</button>
+          <button class="btn btn-primary">Marcar Visto</button>
+          <button class="btn btn-danger">Borrar</button>
+        </div>
+      </section>
+
+      <!-- ---------- COLUMNA 3: AGENDA + TAREAS ---------- -->
+      <aside class="sidebar">
+
+        <section class="panel agenda-panel">
+          <div class="agenda-header">
+            <h2 class="panel-title">Agenda</h2>
+            <div class="agenda-controls">
+              <span class="agenda-month">December 2025</span>
+              <button class="agenda-nav" aria-label="Mes anterior">&lt;</button>
+              <button class="agenda-nav" aria-label="Mes siguiente">&gt;</button>
+            </div>
+          </div>
+
+          <table class="agenda-calendar">
+            <thead>
+              <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="is-outside">30</td>
+                <td class="is-outside">1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td class="is-selected">15</td>
+                <td>16</td>
+                <td>17</td>
+                <td>18</td>
+                <td>19</td>
+                <td>20</td>
+              </tr>
+              <tr>
+                <td>21</td>
+                <td>22</td>
+                <td>23</td>
+                <td>24</td>
+                <td>25</td>
+                <td>26</td>
+                <td>27</td>
+              </tr>
+              <tr>
+                <td>28</td>
+                <td>29</td>
+                <td>30</td>
+                <td>31</td>
+                <td class="is-outside">1</td>
+                <td class="is-outside">2</td>
+                <td class="is-outside">3</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="agenda-actions">
+            <button class="btn btn-primary">Crear Evento</button>
+            <button class="btn btn-danger">Borrar Evento</button>
+          </div>
+        </section>
+
+        <section class="panel tasks-panel">
+          <h2 class="panel-title">Tareas Pendientes</h2>
+          <ul class="tasks-list">
+            <li class="tasks-empty">No hay tareas pendientes.</li>
+          </ul>
+        </section>
+
+      </aside>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

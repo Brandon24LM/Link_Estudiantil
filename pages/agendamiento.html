@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamiento y Sesiones - LinkEstudiantil</title>
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="app-header">
+      <div class="logo">
+        <img src="logo.png" alt="LinkEstudiantil">
+        <span>LinkEstudiantil</span>
+      </div>
+
+      <nav class="main-nav">
+        <button class="nav-icon" aria-label="Menú">
+          <img src="icon-menu.svg" alt="">
+        </button>
+        <button class="nav-icon" aria-label="Inicio">
+          <img src="icon-home.svg" alt="">
+        </button>
+        <button class="nav-icon" aria-label="Contactos">
+          <img src="icon-contacts.svg" alt="">
+        </button>
+      </nav>
+
+      <div class="header-actions">
+        <button class="nav-icon" aria-label="Notificaciones">
+          <img src="icon-bell.svg" alt="">
+        </button>
+        <button class="nav-icon" aria-label="Perfil">
+          <img src="icon-user.svg" alt="">
+        </button>
+      </div>
+    </header>
+
+    <!-- ===================== MAIN ===================== -->
+    <main class="scheduling-layout">
+
+      <!-- ---------- SECCIÓN: SESIONES ---------- -->
+      <section class="panel sessions-panel">
+        <h1 class="section-title">Sesiones</h1>
+
+        <div class="sessions-grid">
+
+          <!-- Tarjeta: Cursos Activos -->
+          <article class="session-card">
+            <h2 class="card-title">Cursos Activos</h2>
+
+            <div class="course-row">
+              <img class="course-thumb" src="course-english.jpg" alt="Curso de Inglés">
+
+              <span class="course-arrow" aria-hidden="true">&gt;</span>
+
+              <div class="course-progress">
+                <div class="progress-circle" data-progress="25">
+                  <span class="progress-value">25%</span>
+                </div>
+                <p class="progress-label">En proceso</p>
+              </div>
+            </div>
+
+            <p class="course-name">Clase de Inglés</p>
+            <p class="course-author">Olivia Rodriguez</p>
+
+            <button class="btn btn-primary">Mas</button>
+          </article>
+
+          <!-- Tarjeta: Cursos Completados -->
+          <article class="session-card">
+            <h2 class="card-title">Cursos Completados</h2>
+
+            <div class="course-row">
+              <img class="course-thumb" src="course-english.jpg" alt="Curso de Inglés">
+
+              <span class="course-arrow" aria-hidden="true">&gt;</span>
+
+              <div class="course-progress">
+                <div class="progress-circle is-complete" data-progress="100">
+                  <span class="progress-value">100%</span>
+                </div>
+                <p class="progress-label">Completado</p>
+              </div>
+            </div>
+
+            <p class="course-name">Clase de Inglés</p>
+            <p class="course-author">Olivia Rodriguez</p>
+
+            <button class="btn btn-primary">Mas</button>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ---------- SECCIÓN: AGENDAMIENTO ---------- -->
+      <section class="panel scheduling-panel">
+        <h2 class="section-title section-title-accent">Agendamiendo</h2>
+
+        <div class="scheduling-subheader">
+          <h3 class="subsection-title">Cursos Actuales</h3>
+          <button class="link-more" aria-label="Ver más cursos actuales">
+            <span aria-hidden="true">&gt;</span>
+          </button>
+        </div>
+
+        <ul class="courses-carousel">
+
+          <li class="course-item">
+            <img class="course-icon" src="course-calculo-derivadas.svg" alt="Cálculo Derivadas">
+            <p class="course-item-name">Calculo Derivadas</p>
+            <p class="course-item-status">Actividades 2 de 14</p>
+          </li>
+
+          <li class="course-item">
+            <img class="course-icon" src="course-calculo-integrales.svg" alt="Cálculo Integrales">
+            <p class="course-item-name">Calculo Integrales</p>
+            <p class="course-item-status">Completado</p>
+          </li>
+
+          <li class="course-item">
+            <img class="course-icon" src="course-segunda-lengua.svg" alt="Segunda Lengua">
+            <p class="course-item-name">Segunda Lengua</p>
+            <p class="course-item-status">Completado</p>
+          </li>
+
+          <li class="course-item">
+            <img class="course-icon" src="course-calculo-1.svg" alt="Cálculo I">
+            <p class="course-item-name">Calculo I</p>
+            <p class="course-item-status">Completado</p>
+          </li>
+
+          <li class="course-item">
+            <img class="course-icon" src="course-quimica.jpg" alt="Química">
+            <p class="course-item-name">Quimica</p>
+            <p class="course-item-status">Completado</p>
+          </li>
+
+          <li class="course-item">
+            <img class="course-icon" src="course-poo.svg" alt="Programación Orientada a Objetos">
+            <p class="course-item-name">POO</p>
+            <p class="course-item-status">Completado</p>
+          </li>
+
+          <li class="course-item">
+            <img class="course-icon" src="course-calculo-2.svg" alt="Cálculo II">
+            <p class="course-item-name">Calculo II</p>
+            <p class="course-item-status">Completado</p>
+          </li>
+
+        </ul>
+      </section>
+
+    </main>
+
+  </div>
+
+</body>
+</html>
