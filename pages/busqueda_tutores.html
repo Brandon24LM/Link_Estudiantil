@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar Tutores | LinkEstudiantil</title>
+  <meta name="description" content="Encuentra tutores disponibles por materia, nivel y modalidad en LinkEstudiantil.">
+  <meta name="author" content="LinkEstudiantil">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ===================== HEADER (igual que index.html) ===================== -->
+    <header class="app-header">
+      <div class="logo">
+        <span class="logo-text">LinkEstudiantil</span>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <button class="nav-icon" type="button" aria-label="Menú">
+          <img src="../images/icon-menu.svg" alt="">
+        </button>
+        <a class="nav-icon" href="../index.html" aria-label="Inicio">
+          <img src="../images/icon-home.svg" alt="">
+        </a>
+        <a class="nav-icon is-active" href="#" aria-current="page" aria-label="Tutores">
+          <img src="../images/icon-contacts.svg" alt="">
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="nav-icon" href="#ayuda" aria-label="Ayuda">
+          <img src="../images/icon-bell.svg" alt="">
+        </a>
+        <a class="nav-icon" href="../index.html#perfil-usuario" aria-label="Perfil">
+          <img src="../images/icon-user.svg" alt="">
+        </a>
+      </div>
+    </header>
+
+    <!-- ===================== MAIN ===================== -->
+    <main class="search-layout">
+      <h1 class="page-title">Buscar Tutores</h1>
+
+      <section class="search-filters" aria-labelledby="filtros-title">
+        <h2 id="filtros-title" class="filters-label">Búsqueda por:</h2>
+
+        <form class="filters-form">
+          <div class="filter-field">
+            <label for="materia" class="visually-hidden">Materia</label>
+            <select id="materia" name="materia" class="filter-select">
+              <option value="">Materia</option>
+              <option value="ingles">Inglés</option>
+              <option value="matematicas">Matemáticas</option>
+              <option value="programacion">Programación</option>
+            </select>
+          </div>
+
+          <div class="filter-field">
+            <label for="nivel" class="visually-hidden">Nivel</label>
+            <select id="nivel" name="nivel" class="filter-select">
+              <option value="">Nivel</option>
+              <option value="basico">Básico</option>
+              <option value="intermedio">Intermedio</option>
+              <option value="avanzado">Avanzado</option>
+            </select>
+          </div>
+
+          <div class="filter-field">
+            <label for="modalidad" class="visually-hidden">Modalidad</label>
+            <select id="modalidad" name="modalidad" class="filter-select">
+              <option value="">Modalidad</option>
+              <option value="virtual">Virtual</option>
+              <option value="presencial">Presencial</option>
+            </select>
+          </div>
+        </form>
+      </section>
+
+      <div class="search-results-columns">
+
+        <!-- ---------- Resultados (siempre visible) ---------- -->
+        <section class="panel panel-results" aria-labelledby="results-title">
+          <h2 class="panel-title" id="results-title">Resultados:</h2>
+          <div class="card-grid">
+            <article class="card tutor-card">
+              <img class="card-image" src="../images/tutor-placeholder.jpg" alt="Foto del tutor">
+              <p class="card-title">Clase de Inglés</p>
+            </article>
+            <article class="card tutor-card">
+              <img class="card-image" src="../images/tutor-placeholder.jpg" alt="Foto del tutor">
+              <p class="card-title">Clase de Inglés</p>
+            </article>
+            <article class="card tutor-card">
+              <img class="card-image" src="../images/tutor-placeholder.jpg" alt="Foto del tutor">
+              <p class="card-title">Clase de Inglés</p>
+            </article>
+            <article class="card tutor-card">
+              <img class="card-image" src="../images/tutor-placeholder.jpg" alt="Foto del tutor">
+              <p class="card-title">Clase de Inglés</p>
+            </article>
+          </div>
+          <button type="button" class="panel-toggle" aria-expanded="false" aria-controls="results-title">
+            <span class="visually-hidden">Ver más resultados</span>
+            <span class="chevron" aria-hidden="true"></span>
+          </button>
+        </section>
+
+        <!-- ---------- Tutores disponibles ¡AHORA! ---------- -->
+        <section class="panel panel-results panel-available" aria-labelledby="available-title">
+          <h2 class="panel-title" id="available-title">Tutores disponibles ¡AHORA!</h2>
+          <div class="card-grid">
+            <article class="card tutor-card">
+              <img class="card-image" src="../images/tutor-placeholder.jpg" alt="Foto del tutor">
+              <p class="card-title">Clase de Inglés</p>
+            </article>
+            <article class="card tutor-card">
+              <img class="card-image" src="../images/tutor-placeholder.jpg" alt="Foto del tutor">
+              <p class="card-title">Clase de Inglés</p>
+            </article>
+            <article class="card tutor-card">
+              <img class="card-image" src="../images/tutor-placeholder.jpg" alt="Foto del tutor">
+              <p class="card-title">Clase de Inglés</p>
+            </article>
+            <article class="card tutor-card">
+              <img class="card-image" src="../images/tutor-placeholder.jpg" alt="Foto del tutor">
+              <p class="card-title">Clase de Inglés</p>
+            </article>
+          </div>
+          <button type="button" class="panel-toggle" aria-expanded="false" aria-controls="available-title">
+            <span class="visually-hidden">Ver más tutores disponibles</span>
+            <span class="chevron" aria-hidden="true"></span>
+          </button>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- ===================== FOOTER (igual que index.html) ===================== -->
+    <footer class="site-footer" aria-label="Redes sociales">
+      <a class="social-link" href="#instagram">Instagram</a>
+      <a class="social-link" href="#facebook">Facebook</a>
+      <a class="social-link" href="#twitter">Twitter</a>
+      <a class="social-link" href="#linkedin">LinkedIn</a>
+      <a class="social-link" href="#youtube">YouTube</a>
+      <a class="social-link" href="#tiktok">TikTok</a>
+    </footer>
+
+  </div>
+
+</body>
+</html>
