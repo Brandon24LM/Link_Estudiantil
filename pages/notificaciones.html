@@ -1,206 +1,259 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notificaciones - LinkEstudiantil</title>
-</head>
-<body>
+  <!DOCTYPE html>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificaciones - LinkEstudiantil</title>
 
-  <div class="app-container">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- ===================== HEADER ===================== -->
-    <header class="app-header">
-      <div class="logo">
-        <img src="logo.png" alt="LinkEstudiantil">
-        <span>LinkEstudiantil</span>
-      </div>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-      <nav class="main-nav">
-        <button class="nav-icon" aria-label="Menú">
-          <img src="icon-menu.svg" alt="">
-        </button>
-        <button class="nav-icon" aria-label="Inicio">
-          <img src="icon-home.svg" alt="">
-        </button>
-        <button class="nav-icon" aria-label="Contactos">
-          <img src="icon-contacts.svg" alt="">
-        </button>
-      </nav>
+    <!-- Configuración de Tailwind con tus variables (igual que index.html) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#0064e0',
+              'primary-dark': '#0050b3',
+              secondary: '#0ba06a',
+              'secondary-dark': '#088055',
+              muted: '#5f6470',
+              selected: '#a5d8ff',
+              error: '#ff383c',
+              'card-bg': '#dddddd',
+              border: '#e0e0e0',
+            },
+            fontFamily: {
+              sans: ['Inter', 'Arial', 'sans-serif'],
+            },
+            borderRadius: {
+              'sm': '6px',
+              'md': '12px',
+              'pill': '999px',
+            },
+            boxShadow: {
+              'card': '0 4px 12px rgb(0 0 0 / 8%)',
+              'card-hover': '0 8px 24px rgb(0 0 0 / 12%)',
+            }
+          }
+        }
+      }
+    </script>
 
-      <div class="header-actions">
-        <button class="nav-icon" aria-label="Notificaciones">
-          <img src="icon-bell.svg" alt="">
-        </button>
-        <button class="nav-icon" aria-label="Perfil">
-          <img src="icon-user.svg" alt="">
-        </button>
-      </div>
-    </header>
+    <link rel="stylesheet" href="../css/styles.css">
+  <base target="_blank">
+  </head>
+  <body class="font-sans text-sm text-black bg-white antialiased">
 
-    <h1 class="page-title">Notificaciones</h1>
+    <div class="app-container">
 
-    <!-- ===================== MAIN LAYOUT ===================== -->
-    <main class="notifications-layout">
-
-      <!-- ---------- COLUMNA 1: LISTA DE MENSAJES ---------- -->
-      <section class="panel messages-panel">
-        <h2 class="panel-title">Mensajes</h2>
-
-        <ul class="messages-list">
-          <li class="message-item is-active">
-            <img class="avatar" src="avatar-alina.jpg" alt="Alina R.">
-            <div class="message-item-info">
-              <p class="message-sender">Alina R. <span class="message-time">Hace 5 min</span></p>
-              <p class="message-preview">Reviso tu tutoría</p>
-            </div>
-          </li>
-
-          <li class="message-item">
-            <img class="avatar" src="avatar-brandon.jpg" alt="Brandon Lozano">
-            <div class="message-item-info">
-              <p class="message-sender">Brandon Lozano <span class="message-time">Hace 1 hora</span></p>
-              <p class="message-preview">Material disponible</p>
-            </div>
-          </li>
-
-          <li class="message-item">
-            <img class="avatar" src="avatar-christopher.jpg" alt="Christopher Villagómez">
-            <div class="message-item-info">
-              <p class="message-sender">Christopher Villagómez <span class="message-time">2d</span></p>
-              <p class="message-preview">Clase Programada 26-08-2026</p>
-            </div>
-          </li>
-        </ul>
-      </section>
-
-      <!-- ---------- COLUMNA 2: DETALLE DEL MENSAJE ---------- -->
-      <section class="panel message-detail-panel">
-        <header class="message-detail-header">
-          <img class="avatar" src="avatar-alina.jpg" alt="Alina R.">
-          <div>
-            <p class="message-sender">Alina R.</p>
-            <p class="message-time">Hace 5 min</p>
-          </div>
-        </header>
-
-        <div class="message-body">
-          <p>Hola, Recuerda recuerda revisar la tutoría</p>
+      <!-- ===================== HEADER (idéntico a index.html) ===================== -->
+      <header class="app-header">
+        <div class="logo flex items-center gap-2">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+            <rect width="32" height="32" rx="8" fill="#0064e0"/>
+            <path d="M8 16C8 11.5817 11.5817 8 16 8C20.4183 8 24 11.5817 24 16" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M24 16C24 20.4183 20.4183 24 16 24C11.5817 24 8 20.4183 8 16" stroke="#0ba06a" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 4"/>
+            <circle cx="16" cy="16" r="3" fill="white"/>
+          </svg>
+          <span class="logo-text">LinkEstudiantil</span>
         </div>
 
-        <div class="message-attachment">
-          <p class="attachment-label">Archivo Adjunto</p>
-          <div class="attachment-file">
-            <img class="file-icon" src="icon-pdf.svg" alt="PDF">
-            <div class="file-info">
-              <p class="file-name">Quimica_Tutoria</p>
-              <p class="file-meta">PDF - 223 KB</p>
-            </div>
-            <button class="file-download" aria-label="Descargar">
-              <img src="icon-download.svg" alt="">
-            </button>
-          </div>
+        <nav class="main-nav" aria-label="Navegación principal">
+          <button class="nav-icon" type="button" aria-label="Menú">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+          <a class="nav-icon" href="../index.html" aria-label="Inicio">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          </a>
+          <a class="nav-icon" href="#tutores" aria-label="Tutores">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </a>
+        </nav>
+
+        <div class="header-actions">
+          <a class="nav-icon is-active relative" href="#notificaciones" aria-current="page" aria-label="Notificaciones">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+          </a>
+          <a class="nav-icon" href="#perfil-usuario" aria-label="Perfil">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </a>
         </div>
+      </header>
 
-        <div class="message-actions">
-          <button class="btn btn-primary">Responder</button>
-          <button class="btn btn-primary">Marcar Visto</button>
-          <button class="btn btn-danger">Borrar</button>
-        </div>
-      </section>
+      <h1 class="page-title">Notificaciones</h1>
 
-      <!-- ---------- COLUMNA 3: AGENDA + TAREAS ---------- -->
-      <aside class="sidebar">
+      <!-- ===================== MAIN LAYOUT ===================== -->
+      <main class="notifications-layout">
 
-        <section class="panel agenda-panel">
-          <div class="agenda-header">
-            <h2 class="panel-title">Agenda</h2>
-            <div class="agenda-controls">
-              <span class="agenda-month">December 2025</span>
-              <button class="agenda-nav" aria-label="Mes anterior">&lt;</button>
-              <button class="agenda-nav" aria-label="Mes siguiente">&gt;</button>
-            </div>
-          </div>
+        <!-- ---------- COLUMNA 1: LISTA DE MENSAJES ---------- -->
+        <section class="panel messages-panel" aria-labelledby="mensajes-titulo">
+          <h2 class="panel-title" id="mensajes-titulo">Mensajes</h2>
 
-          <table class="agenda-calendar">
-            <thead>
-              <tr>
-                <th>Sun</th>
-                <th>Mon</th>
-                <th>Tue</th>
-                <th>Wed</th>
-                <th>Thu</th>
-                <th>Fri</th>
-                <th>Sat</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="is-outside">30</td>
-                <td class="is-outside">1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>8</td>
-                <td>9</td>
-                <td>10</td>
-                <td>11</td>
-                <td>12</td>
-                <td>13</td>
-              </tr>
-              <tr>
-                <td>14</td>
-                <td class="is-selected">15</td>
-                <td>16</td>
-                <td>17</td>
-                <td>18</td>
-                <td>19</td>
-                <td>20</td>
-              </tr>
-              <tr>
-                <td>21</td>
-                <td>22</td>
-                <td>23</td>
-                <td>24</td>
-                <td>25</td>
-                <td>26</td>
-                <td>27</td>
-              </tr>
-              <tr>
-                <td>28</td>
-                <td>29</td>
-                <td>30</td>
-                <td>31</td>
-                <td class="is-outside">1</td>
-                <td class="is-outside">2</td>
-                <td class="is-outside">3</td>
-              </tr>
-            </tbody>
-          </table>
+          <ul class="messages-list">
+            <li class="message-item is-active">
+              <!-- AVATAR — placeholder con iniciales hasta subir la foto real -->
+              <div class="avatar-placeholder" aria-hidden="true">AR</div>
+              <div class="message-item-info">
+                <p class="message-sender">Alina R. <span class="message-time">Hace 5 min</span></p>
+                <p class="message-preview">Reviso tu tutoría</p>
+              </div>
+            </li>
 
-          <div class="agenda-actions">
-            <button class="btn btn-primary">Crear Evento</button>
-            <button class="btn btn-danger">Borrar Evento</button>
-          </div>
-        </section>
+            <li class="message-item">
+              <div class="avatar-placeholder" aria-hidden="true">BL</div>
+              <div class="message-item-info">
+                <p class="message-sender">Brandon Lozano <span class="message-time">Hace 1 hora</span></p>
+                <p class="message-preview">Material disponible</p>
+              </div>
+            </li>
 
-        <section class="panel tasks-panel">
-          <h2 class="panel-title">Tareas Pendientes</h2>
-          <ul class="tasks-list">
-            <li class="tasks-empty">No hay tareas pendientes.</li>
+            <li class="message-item">
+              <div class="avatar-placeholder" aria-hidden="true">CV</div>
+              <div class="message-item-info">
+                <p class="message-sender">Christopher Villagómez <span class="message-time">2d</span></p>
+                <p class="message-preview">Clase Programada 26-08-2026</p>
+              </div>
+            </li>
           </ul>
         </section>
 
-      </aside>
+        <!-- ---------- COLUMNA 2: DETALLE DEL MENSAJE ---------- -->
+        <section class="panel message-detail-panel" aria-label="Detalle del mensaje seleccionado">
+          <header class="message-detail-header">
+            <div class="avatar-placeholder" aria-hidden="true">AR</div>
+            <div>
+              <p class="message-sender">Alina R.</p>
+              <p class="message-time">Hace 5 min</p>
+            </div>
+          </header>
 
-    </main>
+          <div class="message-body">
+            <p>Hola, recuerda revisar la tutoría.</p>
+          </div>
 
-  </div>
+          <div class="message-attachment">
+            <p class="attachment-label">Archivo Adjunto</p>
+            <div class="attachment-file">
+              <!-- ICONO DE ARCHIVO — insignia de tipo, sin depender de un asset externo -->
+              <div class="file-icon" aria-hidden="true">PDF</div>
+              <div class="file-info">
+                <p class="file-name">Quimica_Tutoria</p>
+                <p class="file-meta">PDF · 223 KB</p>
+              </div>
+              <button class="file-download" aria-label="Descargar Quimica_Tutoria.pdf">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"></path><polyline points="7 11 12 16 17 11"></polyline><path d="M5 21h14"></path></svg>
+              </button>
+            </div>
+          </div>
 
-</body>
-</html>
+          <div class="message-actions">
+            <button class="btn btn-primary">Responder</button>
+            <button class="btn btn-primary">Marcar Visto</button>
+            <button class="btn btn-danger">Borrar</button>
+          </div>
+        </section>
+
+        <!-- ---------- COLUMNA 3: AGENDA + TAREAS ---------- -->
+        <aside class="sidebar">
+
+          <section class="panel agenda-panel" aria-labelledby="agenda-titulo">
+            <div class="agenda-header">
+              <h2 class="panel-title" id="agenda-titulo">Agenda</h2>
+              <div class="agenda-controls">
+                <button class="agenda-nav" aria-label="Mes anterior">&lt;</button>
+                <span class="agenda-month">Diciembre 2025</span>
+                <button class="agenda-nav" aria-label="Mes siguiente">&gt;</button>
+              </div>
+            </div>
+
+            <table class="agenda-calendar">
+              <caption class="sr-only">Calendario de diciembre 2025</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Dom</th>
+                  <th scope="col">Lun</th>
+                  <th scope="col">Mar</th>
+                  <th scope="col">Mié</th>
+                  <th scope="col">Jue</th>
+                  <th scope="col">Vie</th>
+                  <th scope="col">Sáb</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="is-outside"><span class="day">30</span></td>
+                  <td class="is-outside"><span class="day">1</span></td>
+                  <td><span class="day">2</span></td>
+                  <td><span class="day">3</span></td>
+                  <td><span class="day">4</span></td>
+                  <td><span class="day">5</span></td>
+                  <td><span class="day">6</span></td>
+                </tr>
+                <tr>
+                  <td><span class="day">7</span></td>
+                  <td><span class="day">8</span></td>
+                  <td><span class="day">9</span></td>
+                  <td><span class="day">10</span></td>
+                  <td><span class="day">11</span></td>
+                  <td><span class="day">12</span></td>
+                  <td><span class="day">13</span></td>
+                </tr>
+                <tr>
+                  <td><span class="day">14</span></td>
+                  <td class="is-selected"><span class="day">15</span></td>
+                  <td><span class="day">16</span></td>
+                  <td><span class="day">17</span></td>
+                  <td><span class="day">18</span></td>
+                  <td><span class="day">19</span></td>
+                  <td><span class="day">20</span></td>
+                </tr>
+                <tr>
+                  <td><span class="day">21</span></td>
+                  <td><span class="day">22</span></td>
+                  <td><span class="day">23</span></td>
+                  <td><span class="day">24</span></td>
+                  <td><span class="day">25</span></td>
+                  <td><span class="day">26</span></td>
+                  <td><span class="day">27</span></td>
+                </tr>
+                <tr>
+                  <td><span class="day">28</span></td>
+                  <td><span class="day">29</span></td>
+                  <td><span class="day">30</span></td>
+                  <td><span class="day">31</span></td>
+                  <td class="is-outside"><span class="day">1</span></td>
+                  <td class="is-outside"><span class="day">2</span></td>
+                  <td class="is-outside"><span class="day">3</span></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="agenda-actions">
+              <button class="btn btn-primary btn-sm">Crear Evento</button>
+              <button class="btn btn-danger btn-sm">Borrar Evento</button>
+            </div>
+          </section>
+
+          <section class="panel tasks-panel" aria-labelledby="tareas-titulo">
+            <h2 class="panel-title" id="tareas-titulo">Tareas Pendientes</h2>
+            <ul class="tasks-list">
+              <li class="tasks-empty">No hay tareas pendientes.</li>
+            </ul>
+          </section>
+
+        </aside>
+
+      </main>
+
+    </div>
+
+  </body>
+  </html>

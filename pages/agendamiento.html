@@ -4,37 +4,88 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agendamiento y Sesiones - LinkEstudiantil</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Configuración de Tailwind con tus variables (igual que index.html) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0064e0',
+            'primary-dark': '#0050b3',
+            secondary: '#0ba06a',
+            'secondary-dark': '#088055',
+            muted: '#5f6470',
+            selected: '#a5d8ff',
+            error: '#ff383c',
+            'card-bg': '#dddddd',
+            border: '#e0e0e0',
+          },
+          fontFamily: {
+            sans: ['Inter', 'Arial', 'sans-serif'],
+          },
+          borderRadius: {
+            'sm': '6px',
+            'md': '12px',
+            'pill': '999px',
+          },
+          boxShadow: {
+            'card': '0 4px 12px rgb(0 0 0 / 8%)',
+            'card-hover': '0 8px 24px rgb(0 0 0 / 12%)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Este archivo vive en pages/, por eso sube un nivel para llegar a css/ -->
+  <link rel="stylesheet" href="../css/styles.css">
+<base target="_blank">
 </head>
-<body>
+<body class="font-sans text-sm text-black bg-white antialiased">
 
   <div class="app-container">
 
-    <!-- ===================== HEADER ===================== -->
+    <!-- ===================== HEADER (idéntico al resto de páginas) ===================== -->
     <header class="app-header">
-      <div class="logo">
-        <img src="logo.png" alt="LinkEstudiantil">
-        <span>LinkEstudiantil</span>
+      <div class="logo flex items-center gap-2">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
+          <rect width="32" height="32" rx="8" fill="#0064e0"/>
+          <path d="M8 16C8 11.5817 11.5817 8 16 8C20.4183 8 24 11.5817 24 16" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M24 16C24 20.4183 20.4183 24 16 24C11.5817 24 8 20.4183 8 16" stroke="#0ba06a" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 4"/>
+          <circle cx="16" cy="16" r="3" fill="white"/>
+        </svg>
+        <span class="logo-text">LinkEstudiantil</span>
       </div>
 
-      <nav class="main-nav">
-        <button class="nav-icon" aria-label="Menú">
-          <img src="icon-menu.svg" alt="">
+      <nav class="main-nav" aria-label="Navegación principal">
+        <button class="nav-icon" type="button" aria-label="Menú">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
-        <button class="nav-icon" aria-label="Inicio">
-          <img src="icon-home.svg" alt="">
-        </button>
-        <button class="nav-icon" aria-label="Contactos">
-          <img src="icon-contacts.svg" alt="">
-        </button>
+        <a class="nav-icon" href="../index.html" aria-label="Inicio">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        </a>
+        <a class="nav-icon" href="busqueda_tutores.html" aria-label="Tutores">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        </a>
       </nav>
 
       <div class="header-actions">
-        <button class="nav-icon" aria-label="Notificaciones">
-          <img src="icon-bell.svg" alt="">
-        </button>
-        <button class="nav-icon" aria-label="Perfil">
-          <img src="icon-user.svg" alt="">
-        </button>
+        <a class="nav-icon relative" href="notificaciones.html" aria-label="Notificaciones">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+          <span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+        </a>
+        <a class="nav-icon" href="#perfil-usuario" aria-label="Perfil">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </a>
       </div>
     </header>
 
@@ -52,12 +103,17 @@
             <h2 class="card-title">Cursos Activos</h2>
 
             <div class="course-row">
-              <img class="course-thumb" src="course-english.jpg" alt="Curso de Inglés">
+              <!-- PORTADA DEL CURSO — placeholder hasta subir la imagen real -->
+              <div class="course-thumb">
+                <div class="img-placeholder img-placeholder--course" role="img" aria-label="Portada del curso Clase de Inglés">
+                  <span class="placeholder-text">ENG</span>
+                </div>
+              </div>
 
               <span class="course-arrow" aria-hidden="true">&gt;</span>
 
               <div class="course-progress">
-                <div class="progress-circle" data-progress="25">
+                <div class="progress-circle" data-progress="25" style="--progress:25" aria-label="25% completado, en proceso">
                   <span class="progress-value">25%</span>
                 </div>
                 <p class="progress-label">En proceso</p>
@@ -67,7 +123,7 @@
             <p class="course-name">Clase de Inglés</p>
             <p class="course-author">Olivia Rodriguez</p>
 
-            <button class="btn btn-primary">Mas</button>
+            <button class="btn btn-primary">Más</button>
           </article>
 
           <!-- Tarjeta: Cursos Completados -->
@@ -75,12 +131,16 @@
             <h2 class="card-title">Cursos Completados</h2>
 
             <div class="course-row">
-              <img class="course-thumb" src="course-english.jpg" alt="Curso de Inglés">
+              <div class="course-thumb">
+                <div class="img-placeholder img-placeholder--course" role="img" aria-label="Portada del curso Clase de Inglés">
+                  <span class="placeholder-text">ENG</span>
+                </div>
+              </div>
 
               <span class="course-arrow" aria-hidden="true">&gt;</span>
 
               <div class="course-progress">
-                <div class="progress-circle is-complete" data-progress="100">
+                <div class="progress-circle is-complete" data-progress="100" style="--progress:100" aria-label="100% completado">
                   <span class="progress-value">100%</span>
                 </div>
                 <p class="progress-label">Completado</p>
@@ -90,7 +150,7 @@
             <p class="course-name">Clase de Inglés</p>
             <p class="course-author">Olivia Rodriguez</p>
 
-            <button class="btn btn-primary">Mas</button>
+            <button class="btn btn-primary">Más</button>
           </article>
 
         </div>
@@ -98,7 +158,7 @@
 
       <!-- ---------- SECCIÓN: AGENDAMIENTO ---------- -->
       <section class="panel scheduling-panel">
-        <h2 class="section-title section-title-accent">Agendamiendo</h2>
+        <h2 class="section-title section-title-accent">Agendamiento</h2>
 
         <div class="scheduling-subheader">
           <h3 class="subsection-title">Cursos Actuales</h3>
@@ -110,43 +170,43 @@
         <ul class="courses-carousel">
 
           <li class="course-item">
-            <img class="course-icon" src="course-calculo-derivadas.svg" alt="Cálculo Derivadas">
+            <div class="course-icon icon-chip--a" role="img" aria-label="Cálculo Derivadas">DER</div>
             <p class="course-item-name">Calculo Derivadas</p>
             <p class="course-item-status">Actividades 2 de 14</p>
           </li>
 
           <li class="course-item">
-            <img class="course-icon" src="course-calculo-integrales.svg" alt="Cálculo Integrales">
+            <div class="course-icon icon-chip--b" role="img" aria-label="Cálculo Integrales">INT</div>
             <p class="course-item-name">Calculo Integrales</p>
             <p class="course-item-status">Completado</p>
           </li>
 
           <li class="course-item">
-            <img class="course-icon" src="course-segunda-lengua.svg" alt="Segunda Lengua">
+            <div class="course-icon icon-chip--c" role="img" aria-label="Segunda Lengua">L2</div>
             <p class="course-item-name">Segunda Lengua</p>
             <p class="course-item-status">Completado</p>
           </li>
 
           <li class="course-item">
-            <img class="course-icon" src="course-calculo-1.svg" alt="Cálculo I">
+            <div class="course-icon icon-chip--d" role="img" aria-label="Cálculo I">C1</div>
             <p class="course-item-name">Calculo I</p>
             <p class="course-item-status">Completado</p>
           </li>
 
           <li class="course-item">
-            <img class="course-icon" src="course-quimica.jpg" alt="Química">
+            <div class="course-icon icon-chip--e" role="img" aria-label="Química">QUI</div>
             <p class="course-item-name">Quimica</p>
             <p class="course-item-status">Completado</p>
           </li>
 
           <li class="course-item">
-            <img class="course-icon" src="course-poo.svg" alt="Programación Orientada a Objetos">
+            <div class="course-icon icon-chip--f" role="img" aria-label="Programación Orientada a Objetos">POO</div>
             <p class="course-item-name">POO</p>
             <p class="course-item-status">Completado</p>
           </li>
 
           <li class="course-item">
-            <img class="course-icon" src="course-calculo-2.svg" alt="Cálculo II">
+            <div class="course-icon icon-chip--g" role="img" aria-label="Cálculo II">C2</div>
             <p class="course-item-name">Calculo II</p>
             <p class="course-item-status">Completado</p>
           </li>
