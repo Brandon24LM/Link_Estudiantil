@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sesiones y agendamiento · Link Estudiantil</title>
+  <meta name="description" content="Tus cursos activos, completados y sesiones agendadas.">
+  <link rel="icon" href="../assets/logo.png">
+
+  <!-- Tailwind CSS (CDN) + configuración con los tokens del UI Kit -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/tailwind-config.js"></script>
+
+  <!-- Tipografía Inter (UI Kit) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="sesiones" data-auth="true">
+
+  <div id="site-header"></div>
+
+  <main class="app-container">
+    <div class="page-head spread">
+      <div>
+        <h1 class="page-title">Sesiones</h1>
+        <p>Todo lo que tienes en marcha, en un solo lugar.</p>
+      </div>
+      <button class="btn btn-primary" id="btn-nueva" type="button">Agendar nueva sesión</button>
+    </div>
+
+    <section class="panel">
+      <h2 class="panel-title" style="margin-bottom:1rem">Cursos activos</h2>
+      <div class="sessions-grid" id="cursos-activos"></div>
+    </section>
+
+    <section class="panel">
+      <h2 class="panel-title" style="margin-bottom:1rem">Cursos completados</h2>
+      <div class="sessions-grid" id="cursos-completos"></div>
+    </section>
+
+    <section class="panel">
+      <h2 class="panel-title" style="color:var(--color-primary);margin-bottom:1rem">Agendamiento</h2>
+      <p class="filters-label">Materias actuales</p>
+      <div class="courses-carousel" id="materias-carrusel"></div>
+
+      <p class="filters-label" style="margin-top:1.5rem">Próximas sesiones</p>
+      <ul class="timeline" id="agenda-lista"></ul>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="site-tabbar"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

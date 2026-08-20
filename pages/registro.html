@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear cuenta · Link Estudiantil</title>
+  <meta name="description" content="Crea tu cuenta de estudiante o tutor.">
+  <link rel="icon" href="../assets/logo.png">
+
+  <!-- Tailwind CSS (CDN) + configuración con los tokens del UI Kit -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/tailwind-config.js"></script>
+
+  <!-- Tipografía Inter (UI Kit) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="registro">
+
+  <div id="site-header"></div>
+
+  <main class="auth-layout">
+    <aside class="auth-side">
+      <span class="eyebrow" style="color:#a5d8ff">Es gratis</span>
+      <h2>Crea tu cuenta y empieza hoy.</h2>
+      <p style="opacity:.9">Como estudiante reservas sesiones. Como tutor publicas las tuyas y cobras por hora.</p>
+      <ul>
+        <li>✓ <span>Sin costo de registro</span></li>
+        <li>✓ <span>Verificación con sello verde</span></li>
+        <li>✓ <span>Cancelas hasta 6 horas antes</span></li>
+      </ul>
+    </aside>
+
+    <section class="auth-main">
+      <div class="auth-card">
+        <h1 class="page-title">Crear cuenta</h1>
+        <p class="muted" style="margin-bottom:1.25rem">Los datos se guardan solo en este navegador.</p>
+
+        <form id="form-registro" class="panel" novalidate>
+          <div class="form-group">
+            <label for="r-nombre">Nombre completo</label>
+            <input id="r-nombre" placeholder="Brandon Lozano" autocomplete="name" required>
+          </div>
+          <div class="form-group">
+            <label for="r-correo">Correo</label>
+            <input type="email" id="r-correo" placeholder="tu@correo.com" autocomplete="email" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="r-clave">Contraseña</label>
+              <input type="password" id="r-clave" placeholder="Mínimo 6 caracteres" autocomplete="new-password" required>
+            </div>
+            <div class="form-group">
+              <label for="r-clave2">Repite la contraseña</label>
+              <input type="password" id="r-clave2" autocomplete="new-password" required>
+            </div>
+          </div>
+          <div class="progress-bar" id="fuerza"><span data-value="0" style="width:0"></span></div>
+          <p class="hint" style="margin:.35rem 0 1rem">Seguridad: <span id="fuerza-txt">Débil</span></p>
+
+          <div class="form-group">
+            <label for="r-rol">Quiero usar la plataforma como</label>
+            <select id="r-rol">
+              <option value="estudiante">Estudiante — busco tutorías</option>
+              <option value="tutor">Tutor — quiero enseñar</option>
+            </select>
+          </div>
+
+          <p class="error-message hidden" id="registro-error"></p>
+          <button class="btn btn-primary w-full" type="submit">Crear cuenta</button>
+          <p class="hint text-center" style="margin-top:.75rem">¿Ya tienes cuenta? <a href="login.html">Iniciar sesión</a></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="site-tabbar"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

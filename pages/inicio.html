@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú principal · Link Estudiantil</title>
+  <meta name="description" content="Tu panel de cursos, tutores y materias.">
+  <link rel="icon" href="../assets/logo.png">
+
+  <!-- Tailwind CSS (CDN) + configuración con los tokens del UI Kit -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/tailwind-config.js"></script>
+
+  <!-- Tipografía Inter (UI Kit) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="inicio" data-auth="true">
+
+  <div id="site-header"></div>
+
+  <main class="app-container">
+    <div class="page-head spread">
+      <div>
+        <h1 class="page-title">Menú Principal</h1>
+        <p id="saludo">Hola</p>
+      </div>
+      <a class="btn btn-primary" href="tutores.html">Reservar una tutoría</a>
+    </div>
+
+    <div class="home-columns">
+      <!-- ---------- Columna izquierda ---------- -->
+      <aside>
+        <section class="panel" id="perfil-usuario">
+          <div class="panel-header">
+            <h2 class="panel-title">Perfil</h2>
+            <button class="btn btn-primary btn-sm" type="button" id="btn-config" aria-expanded="false" aria-controls="config-form">Configuración</button>
+          </div>
+          <div class="profile-content">
+            <div class="profile-photo-placeholder" id="perfil-avatar">LE</div>
+            <p class="profile-name" id="perfil-nombre">Nombre Usuario</p>
+            <p class="profile-id" id="perfil-id">ID - 02102012012</p>
+            <p class="profile-bio" id="perfil-bio">Biografía</p>
+          </div>
+
+          <form id="config-form" class="hidden" style="border-top:1px solid var(--color-border);padding-top:1rem">
+            <div class="form-group"><label for="input-nombre">Nombre de usuario</label><input id="input-nombre"></div>
+            <div class="form-group"><label for="input-id">ID de estudiante</label><input id="input-id"></div>
+            <div class="form-group"><label for="input-bio">Biografía</label><textarea id="input-bio" rows="3"></textarea></div>
+            <button class="btn btn-primary w-full" type="submit">Guardar cambios</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2 class="panel-title" style="margin-bottom:.75rem">Tu semana</h2>
+          <div class="stack">
+            <div class="spread"><span class="muted">Cursos activos</span><strong id="kpi-cursos" data-count="0">0</strong></div>
+            <div class="spread"><span class="muted">Horas de estudio</span><strong id="kpi-horas" data-count="0" data-suffix=" h">0</strong></div>
+            <div class="spread"><span class="muted">Sesiones agendadas</span><strong id="kpi-sesiones" data-count="0">0</strong></div>
+          </div>
+          <a class="btn btn-outline w-full" href="sesiones.html" style="margin-top:1rem">Ver mi agenda</a>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2 class="panel-title">Tus Cursos</h2>
+            <a class="link-more" href="cursos.html">Ver todos</a>
+          </div>
+          <ul class="course-list" id="mis-cursos"></ul>
+        </section>
+      </aside>
+
+      <!-- ---------- Columna derecha ---------- -->
+      <section>
+        <section class="panel">
+          <div class="panel-header">
+            <h2 class="panel-title">Tutores disponibles</h2>
+            <a class="link-more" href="tutores.html">Ver más</a>
+          </div>
+          <div class="card-grid card-grid--sm" id="tutores-home"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2 class="panel-title">Materias recomendadas</h2>
+            <a class="link-more" href="cursos.html">Ver más</a>
+          </div>
+          <div class="card-grid" id="materias-home"></div>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="site-tabbar"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

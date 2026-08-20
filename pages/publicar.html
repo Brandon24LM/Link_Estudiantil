@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publicar tutoría · Link Estudiantil</title>
+  <meta name="description" content="Publica tu tutoría y define horarios y precio.">
+  <link rel="icon" href="../assets/logo.png">
+
+  <!-- Tailwind CSS (CDN) + configuración con los tokens del UI Kit -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/tailwind-config.js"></script>
+
+  <!-- Tipografía Inter (UI Kit) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="publicar" data-auth="true">
+
+  <div id="site-header"></div>
+
+  <main class="app-container">
+    <div class="page-head">
+      <h1 class="page-title">Publicar tutoría</h1>
+      <p>Completa los datos. Puedes editarlos cuando quieras.</p>
+    </div>
+
+    <div class="home-columns" style="grid-template-columns:1fr 320px">
+      <form class="panel" id="form-publicar" style="margin:0">
+        <div class="form-group">
+          <label for="p-titulo">Título de la tutoría</label>
+          <input id="p-titulo" placeholder="Cálculo diferencial sin sufrir" required>
+          <p class="hint">Di qué resuelves, no solo el nombre de la materia.</p>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group"><label for="p-materia">Materia</label><select id="p-materia"></select></div>
+          <div class="form-group"><label for="p-nivel">Nivel</label>
+            <select id="p-nivel"><option>Todos</option><option>Colegio</option><option>Universidad</option></select></div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group"><label for="p-modalidad">Modalidad</label>
+            <select id="p-modalidad"><option>Virtual</option><option>Presencial</option><option>Híbrido</option></select></div>
+          <div class="form-group"><label for="p-precio">Precio por hora (USD)</label>
+            <input type="number" id="p-precio" min="1" max="200" value="10" required></div>
+        </div>
+
+        <div class="form-group"><label for="p-ciudad">Ciudad</label><input id="p-ciudad" value="Quito"></div>
+
+        <div class="form-group">
+          <label for="p-desc">Descripción</label>
+          <textarea id="p-desc" rows="4" placeholder="Cómo enseñas, qué material usas, para quién es esta tutoría."></textarea>
+        </div>
+
+        <p class="filters-label">Horarios disponibles</p>
+        <div class="slot-grid" id="p-horarios"></div>
+        <p class="hint" id="p-horas-txt" style="margin:.5rem 0 1rem">Ningún horario seleccionado</p>
+
+        <p class="form-note">Tu publicación queda visible al instante en la búsqueda. El sello verificado llega después de la revisión de documentos.</p>
+        <button class="btn btn-primary w-full" type="submit" style="margin-top:1rem">Publicar tutoría</button>
+      </form>
+
+      <aside>
+        <section class="panel" style="margin:0">
+          <h2 class="panel-title" style="margin-bottom:.75rem">Vista previa</h2>
+          <div class="card" id="previa"></div>
+          <p class="hint" style="margin-top:.75rem">Así te verán los estudiantes en los resultados.</p>
+        </section>
+        <section class="panel">
+          <h3 class="panel-title">Consejos</h3>
+          <ul class="stack" style="margin-top:.75rem">
+            <li>• Sube una foto clara: duplica las reservas.</li>
+            <li>• Abre al menos 4 horarios en la semana.</li>
+            <li>• Responde en menos de 12 horas.</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="site-tabbar"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

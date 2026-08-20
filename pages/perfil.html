@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi perfil · Link Estudiantil</title>
+  <meta name="description" content="Edita tus datos y preferencias.">
+  <link rel="icon" href="../assets/logo.png">
+
+  <!-- Tailwind CSS (CDN) + configuración con los tokens del UI Kit -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/tailwind-config.js"></script>
+
+  <!-- Tipografía Inter (UI Kit) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="perfil" data-auth="true">
+
+  <div id="site-header"></div>
+
+  <main class="app-container">
+    <div class="page-head"><h1 class="page-title">Mi perfil</h1></div>
+
+    <div class="home-columns">
+      <aside>
+        <section class="panel" style="margin:0;text-align:center">
+          <div class="profile-photo-placeholder" id="pf-avatar" style="margin:0 auto 1rem">LE</div>
+          <p class="profile-name" id="pf-nombre"></p>
+          <p class="hint" id="pf-correo"></p>
+          <div class="row" id="pf-rol" style="justify-content:center;margin-top:.75rem"></div>
+          <a class="btn btn-outline w-full" href="confianza.html" style="margin-top:1rem">Verificar cuenta</a>
+          <button class="btn btn-danger w-full" id="btn-cerrar" style="margin-top:.5rem" type="button">Cerrar sesión</button>
+        </section>
+
+        <section class="panel">
+          <h2 class="panel-title" style="margin-bottom:.75rem">Notificaciones</h2>
+          <div class="stack">
+            <label class="row" style="gap:.5rem"><input type="checkbox" id="pref-correos" style="accent-color:var(--color-primary)"><span>Avisos por correo</span></label>
+            <label class="row" style="gap:.5rem"><input type="checkbox" id="pref-recordatorios" style="accent-color:var(--color-primary)"><span>Recordatorio 1 h antes</span></label>
+            <label class="row" style="gap:.5rem"><input type="checkbox" id="pref-novedades" style="accent-color:var(--color-primary)"><span>Novedades y promociones</span></label>
+          </div>
+        </section>
+      </aside>
+
+      <section>
+        <form class="panel" id="form-perfil" style="margin:0">
+          <h2 class="panel-title" style="margin-bottom:1rem">Datos personales</h2>
+          <div class="form-group"><label for="e-nombre">Nombre completo</label><input id="e-nombre"></div>
+          <div class="form-row">
+            <div class="form-group"><label for="e-correo">Correo</label><input type="email" id="e-correo"></div>
+            <div class="form-group"><label for="e-codigo">ID de estudiante</label><input id="e-codigo"></div>
+          </div>
+          <div class="form-group"><label for="e-bio">Biografía</label><textarea id="e-bio" rows="3"></textarea></div>
+          <button class="btn btn-primary" type="submit">Guardar cambios</button>
+        </form>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2 class="panel-title">Mis cursos</h2>
+            <a class="link-more" href="cursos.html">Ver catálogo</a>
+          </div>
+          <ul class="course-list" id="mis-cursos-perfil"></ul>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="site-tabbar"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

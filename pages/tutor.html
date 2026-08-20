@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil del tutor · Link Estudiantil</title>
+  <meta name="description" content="Perfil del tutor, reseñas y reserva de sesión.">
+  <link rel="icon" href="../assets/logo.png">
+
+  <!-- Tailwind CSS (CDN) + configuración con los tokens del UI Kit -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/tailwind-config.js"></script>
+
+  <!-- Tipografía Inter (UI Kit) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="tutor">
+
+  <div id="site-header"></div>
+
+  <main class="app-container">
+    <div class="page-head">
+      <a class="link-more" href="tutores.html">‹ Volver a la búsqueda</a>
+    </div>
+
+    <section class="panel">
+      <div class="tutor-hero">
+        <div id="t-foto"></div>
+        <div>
+          <h1 class="page-title" id="t-nombre">Tutor</h1>
+          <p style="font-size:var(--font-size-h3);font-weight:600" id="t-titulo"></p>
+          <div class="row" id="t-chips" style="margin:.75rem 0"></div>
+          <p id="t-rating"></p>
+          <p class="muted" style="margin-top:.75rem" id="t-bio"></p>
+          <p class="price" style="font-size:var(--font-size-h2);margin-top:1rem" id="t-precio"></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="home-columns" style="margin-top:1.5rem">
+      <section class="panel" style="margin:0">
+        <h2 class="panel-title">Reservar una sesión</h2>
+        <div class="form-group" style="margin-top:1rem">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha">
+        </div>
+        <p class="filters-label" style="margin-top:1rem">Horarios</p>
+        <div class="slot-grid" id="slots"></div>
+        <p class="hint" style="margin:.75rem 0 1rem">Los horarios tachados ya están ocupados.</p>
+        <button class="btn btn-primary w-full" id="btn-reservar" type="button">Reservar sesión</button>
+      </section>
+
+      <section>
+        <section class="panel" style="margin:0">
+          <h2 class="panel-title" style="margin-bottom:1rem">Reseñas de estudiantes</h2>
+          <div id="t-resenas"></div>
+        </section>
+        <section class="panel">
+          <h2 class="panel-title">Cómo trabajo</h2>
+          <ul class="stack" style="margin-top:.75rem">
+            <li>• Primera sesión de diagnóstico de 20 minutos, sin costo.</li>
+            <li>• Material y ejercicios enviados después de cada clase.</li>
+            <li>• Puedes reprogramar hasta 6 horas antes.</li>
+          </ul>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="site-tabbar"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

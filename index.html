@@ -3,342 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LinkEstudiantil - Menú Principal</title>
+  <title>Link Estudiantil · Aprende con tutores verificados</title>
+  <meta name="description" content="Plataforma para contratar y publicar tutorías y seguir cursos de cualquier materia.">
+  <link rel="icon" href="assets/logo.png">
 
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS (CDN) + configuración con los tokens del UI Kit -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tailwind-config.js"></script>
 
-  <!-- Google Fonts: Inter -->
+  <!-- Tipografía Inter (UI Kit) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Configuración de Tailwind con tus variables -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#0064e0',
-            'primary-dark': '#0050b3',
-            secondary: '#0ba06a',
-            'secondary-dark': '#088055',
-            muted: '#5f6470',
-            selected: '#a5d8ff',
-            error: '#ff383c',
-            'card-bg': '#dddddd',
-            border: '#e0e0e0',
-          },
-          fontFamily: {
-            sans: ['Inter', 'Arial', 'sans-serif'],
-          },
-          borderRadius: {
-            'sm': '6px',
-            'md': '12px',
-            'pill': '999px',
-          },
-          boxShadow: {
-            'card': '0 4px 12px rgb(0 0 0 / 8%)',
-            'card-hover': '0 8px 24px rgb(0 0 0 / 12%)',
-          }
-        }
-      }
-    }
-  </script>
-
   <link rel="stylesheet" href="css/styles.css">
-<base target="_blank">
 </head>
-<body class="font-sans text-sm text-black bg-white antialiased">
+<body data-page="landing">
 
-  <div class="app-container">
+  <div id="site-header"></div>
 
-    <!-- ===================== HEADER ===================== -->
-    <header class="app-header">
-      <div class="logo flex items-center gap-2">
-        <!-- Logo SVG inline -->
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0">
-          <rect width="32" height="32" rx="8" fill="#0064e0"/>
-          <path d="M8 16C8 11.5817 11.5817 8 16 8C20.4183 8 24 11.5817 24 16" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M24 16C24 20.4183 20.4183 24 16 24C11.5817 24 8 20.4183 8 16" stroke="#0ba06a" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 4"/>
-          <circle cx="16" cy="16" r="3" fill="white"/>
-        </svg>
-        <span class="logo-text">LinkEstudiantil</span>
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <span class="eyebrow">Tutorías verificadas en Ecuador</span>
+          <h1>Encuentra al tutor que te explica <em>como tú necesitas</em>, y sigue el curso a <strong>tu ritmo</strong>.</h1>
+          <p class="hero-lead">Reserva una sesión en dos minutos, revisa reseñas reales y avanza con material que se queda contigo. Y si tú enseñas, publica tu tutoría y llena tu agenda.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="pages/tutores.html">Buscar un tutor</a>
+            <a class="btn btn-outline btn-lg" href="pages/publicar.html">Publicar mi tutoría</a>
+          </div>
+          <div class="hero-stats">
+            <div><p class="stat-value" data-count="180" data-suffix="+">0</p><p class="stat-label">Tutores activos</p></div>
+            <div><p class="stat-value" data-count="42" data-suffix="">0</p><p class="stat-label">Materias</p></div>
+            <div><p class="stat-value" data-count="2400" data-suffix="+">0</p><p class="stat-label">Sesiones dictadas</p></div>
+          </div>
+        </div>
+        <div class="hero-art">
+          <div class="ph ph--hero" data-img="assets/hero.jpg" role="img" aria-label="Estudiante en una tutoría">
+            <span class="ph__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span>
+            <span class="ph__label">assets/hero.jpg</span>
+          </div>
+          <div class="floating-card floating-card--1">★ 4.9 · 128 reseñas</div>
+          <div class="floating-card floating-card--2">✓ Tutor verificado</div>
+        </div>
       </div>
+    </section>
 
-      <nav class="main-nav" aria-label="Navegación principal">
-        <button class="nav-icon" type="button" aria-label="Menú">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
-        <a class="nav-icon is-active" href="#inicio" aria-current="page" aria-label="Inicio">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-        </a>
-        <a class="nav-icon" href="#tutores" aria-label="Tutores">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-        </a>
-      </nav>
+    <!-- ============ CINTA DE MATERIAS ============ -->
+    <div class="marquee" aria-hidden="true"><div class="marquee-track" id="materias-marquee"></div></div>
 
-      <div class="header-actions">
-        <a class="nav-icon relative" href="#ayuda" aria-label="Ayuda">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-          <span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
-        </a>
-        <a class="nav-icon" href="#perfil-usuario" aria-label="Perfil">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        </a>
+    <!-- ============ MATERIAS ============ -->
+    <section class="section">
+      <div class="app-container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Explora</span>
+          <h2>Elige tu materia</h2>
+          <p>Cada materia tiene tutores con horarios abiertos esta semana.</p>
+        </div>
+        <div class="card-grid card-grid--sm" id="materias-grid"></div>
       </div>
-    </header>
+    </section>
 
-    <!-- ===================== MAIN ===================== -->
-    <main class="home-layout">
-      <h1 class="page-title">Menú Principal</h1>
-
-      <div class="home-columns">
-
-        <!-- ---------- COLUMNA IZQUIERDA: PERFIL + CURSOS ---------- -->
-        <aside class="profile-sidebar" aria-label="Perfil y cursos del estudiante">
-
-          <!-- PERFIL -->
-          <section class="panel profile-panel" id="perfil-usuario">
-            <div class="panel-header">
-              <h2 class="panel-title">Perfil</h2>
-              <button class="btn btn-primary btn-sm" type="button" id="btn-config" aria-expanded="false" aria-controls="config-form">Configuración</button>
-            </div>
-
-            <div class="profile-content">
-              <!-- Placeholder de foto de perfil -->
-              <div class="profile-photo-placeholder">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-              </div>
-              <p class="profile-name">Nombre Usuario</p>
-              <p class="profile-id">ID - 02102012012</p>
-              <p class="profile-bio">"Biografía"</p>
-            </div>
-
-            <form id="config-form" class="config-form hidden" aria-label="Formulario de configuración de perfil">
-              <div class="form-group">
-                <label for="input-nombre">Nombre de usuario</label>
-                <input type="text" id="input-nombre" name="nombre" value="Nombre Usuario">
-              </div>
-
-              <div class="form-group">
-                <label for="input-id">ID de estudiante</label>
-                <input type="text" id="input-id" name="idEstudiante" value="02102012012">
-              </div>
-
-              <div class="form-group">
-                <label for="input-bio">Biografía</label>
-                <textarea id="input-bio" name="biografia" rows="3">Biografía</textarea>
-              </div>
-
-              <button class="btn btn-primary w-full" type="submit">Guardar cambios</button>
-            </form>
-          </section>
-
-          <!-- TUS CURSOS -->
-          <section class="panel courses-panel" aria-labelledby="tus-cursos-titulo">
-            <div class="panel-header">
-              <h2 class="panel-title" id="tus-cursos-titulo">Tus Cursos</h2>
-              <a class="link-more" href="#todos-los-cursos">Ver todos</a>
-            </div>
-
-            <ul class="course-list">
-              <!-- Curso 1 - En progreso -->
-              <li class="course-item" id="curso-ingles-1">
-                <div class="course-thumb">
-                  <!-- Placeholder imagen curso -->
-                  <div class="img-placeholder img-placeholder--course">
-                    <span class="placeholder-text">INGLÉS</span>
-                  </div>
-                </div>
-                <div class="course-info">
-                  <p class="course-title">Clase de Inglés</p>
-                  <p class="course-teacher">Olivia Rodríguez</p>
-                </div>
-                <div class="course-arrow">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </div>
-                <div class="course-progress">
-                  <!-- Progreso circular SVG -->
-                  <svg class="progress-ring" width="56" height="56" viewBox="0 0 56 56">
-                    <circle class="progress-ring-bg" cx="28" cy="28" r="22"></circle>
-                    <circle class="progress-ring-fill" cx="28" cy="28" r="22" stroke-dasharray="138.23" stroke-dashoffset="103.67"></circle>
-                    <text x="28" y="29" text-anchor="middle" class="progress-text">25%</text>
-                  </svg>
-                  <span class="progress-label">En proceso</span>
-                </div>
-              </li>
-
-              <!-- Curso 2 - Completado -->
-              <li class="course-item" id="curso-ingles-2">
-                <div class="course-thumb">
-                  <div class="img-placeholder img-placeholder--course">
-                    <span class="placeholder-text">INGLÉS</span>
-                  </div>
-                </div>
-                <div class="course-info">
-                  <p class="course-title">Clase de Inglés</p>
-                  <p class="course-teacher">Olivia Rodríguez</p>
-                </div>
-                <div class="course-arrow">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </div>
-                <div class="course-progress">
-                  <svg class="progress-ring" width="56" height="56" viewBox="0 0 56 56">
-                    <circle class="progress-ring-bg" cx="28" cy="28" r="22"></circle>
-                    <circle class="progress-ring-fill progress-ring-fill--complete" cx="28" cy="28" r="22" stroke-dasharray="138.23" stroke-dashoffset="0"></circle>
-                    <text x="28" y="29" text-anchor="middle" class="progress-text">100%</text>
-                  </svg>
-                  <span class="progress-label progress-label--complete">Completado</span>
-                </div>
-              </li>
-            </ul>
-          </section>
-        </aside>
-
-        <!-- ---------- COLUMNA DERECHA: TUTORES + MATERIAS ---------- -->
-        <section class="discovery" id="todos-los-cursos" aria-label="Tutores y materias disponibles">
-
-          <!-- TUTORES -->
-          <section class="panel tutors-panel" aria-labelledby="tutores-titulo">
-            <div class="panel-header">
-              <h2 class="panel-title" id="tutores-titulo">Tutores disponibles</h2>
-              <a class="link-more" href="#tutores">Ver más</a>
-            </div>
-
-            <div class="card-grid card-grid--horizontal">
-              <article class="card tutor-card">
-                <div class="card-image-wrapper">
-                  <div class="img-placeholder img-placeholder--tutor">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                  </div>
-                </div>
-                <p class="card-title">Clase de Inglés</p>
-                <p class="card-subtitle">Olivia Rodríguez</p>
-              </article>
-
-              <article class="card tutor-card">
-                <div class="card-image-wrapper">
-                  <div class="img-placeholder img-placeholder--tutor">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                  </div>
-                </div>
-                <p class="card-title">Clase de Inglés</p>
-                <p class="card-subtitle">Olivia Rodríguez</p>
-              </article>
-
-              <article class="card tutor-card">
-                <div class="card-image-wrapper">
-                  <div class="img-placeholder img-placeholder--tutor">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                  </div>
-                </div>
-                <p class="card-title">Clase de Inglés</p>
-                <p class="card-subtitle">Olivia Rodríguez</p>
-              </article>
-
-              <article class="card tutor-card">
-                <div class="card-image-wrapper">
-                  <div class="img-placeholder img-placeholder--tutor">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                  </div>
-                </div>
-                <p class="card-title">Clase de Inglés</p>
-                <p class="card-subtitle">Olivia Rodríguez</p>
-              </article>
-            </div>
-          </section>
-
-          <!-- MATERIAS -->
-          <section class="panel subjects-panel" aria-labelledby="materias-titulo">
-            <div class="panel-header">
-              <h2 class="panel-title" id="materias-titulo">Materias</h2>
-              <a class="link-more" href="#materias">Ver más</a>
-            </div>
-
-            <div class="card-grid">
-              <article class="card subject-card">
-                <div class="card-image-wrapper">
-                  <div class="img-placeholder img-placeholder--subject">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                  </div>
-                </div>
-                <p class="card-title">Clase de Inglés</p>
-                <p class="card-subtitle">Olivia Rodríguez</p>
-              </article>
-
-              <article class="card subject-card">
-                <div class="card-image-wrapper">
-                  <div class="img-placeholder img-placeholder--subject">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                  </div>
-                </div>
-                <p class="card-title">Clase de Inglés</p>
-                <p class="card-subtitle">Olivia Rodríguez</p>
-              </article>
-
-              <article class="card subject-card">
-                <div class="card-image-wrapper">
-                  <div class="img-placeholder img-placeholder--subject">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                  </div>
-                </div>
-                <p class="card-title">Clase de Inglés</p>
-                <p class="card-subtitle">Olivia Rodríguez</p>
-              </article>
-
-              <article class="card subject-card">
-                <div class="card-image-wrapper">
-                  <div class="img-placeholder img-placeholder--subject">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-                  </div>
-                </div>
-                <p class="card-title">Clase de Inglés</p>
-                <p class="card-subtitle">Olivia Rodríguez</p>
-              </article>
-            </div>
-          </section>
-        </section>
-
+    <!-- ============ CÓMO FUNCIONA ============ -->
+    <section class="section section--alt">
+      <div class="app-container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Cómo funciona</span>
+          <h2>De la duda a la sesión, en tres pasos</h2>
+        </div>
+        <div class="steps reveal">
+          <article class="step"><h3>Busca</h3><p class="muted">Filtra por materia, modalidad y precio. Mira reseñas y el sello de verificación.</p></article>
+          <article class="step"><h3>Reserva</h3><p class="muted">Eliges día y hora del calendario del tutor. Recibes el recordatorio en tus mensajes.</p></article>
+          <article class="step"><h3>Aprende</h3><p class="muted">Tomas la sesión, marcas tus lecciones y ves tu progreso subir en el panel.</p></article>
+        </div>
       </div>
-    </main>
+    </section>
 
-    <!-- ===================== FOOTER ===================== -->
-    <footer class="site-footer" aria-label="Redes sociales">
-      <a class="social-link" href="#instagram" aria-label="Instagram">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-      </a>
-      <a class="social-link" href="#facebook" aria-label="Facebook">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-      </a>
-      <a class="social-link" href="#twitter" aria-label="Twitter">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
-      </a>
-      <a class="social-link" href="#linkedin" aria-label="LinkedIn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-      </a>
-      <a class="social-link" href="#youtube" aria-label="YouTube">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
-      </a>
-      <a class="social-link" href="#tiktok" aria-label="TikTok">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
-      </a>
-    </footer>
+    <!-- ============ TUTORES DESTACADOS ============ -->
+    <section class="section">
+      <div class="app-container">
+        <div class="spread section-head reveal">
+          <div><span class="eyebrow">Los mejor calificados</span><h2>Tutores disponibles ahora</h2></div>
+          <a class="btn btn-outline" href="pages/tutores.html">Ver todos</a>
+        </div>
+        <div class="carousel">
+          <button class="carousel-btn carousel-btn--prev" type="button" aria-label="Anterior">‹</button>
+          <div class="carousel-track" id="tutores-destacados"></div>
+          <button class="carousel-btn carousel-btn--next" type="button" aria-label="Siguiente">›</button>
+        </div>
+      </div>
+    </section>
 
-  </div>
+    <!-- ============ CURSOS ============ -->
+    <section class="section section--alt">
+      <div class="app-container">
+        <div class="spread section-head reveal">
+          <div><span class="eyebrow">Aprende solo</span><h2>Cursos para seguir a tu ritmo</h2></div>
+          <a class="btn btn-outline" href="pages/cursos.html">Ver catálogo</a>
+        </div>
+        <div class="carousel">
+          <button class="carousel-btn carousel-btn--prev" type="button" aria-label="Anterior">‹</button>
+          <div class="carousel-track" id="cursos-destacados"></div>
+          <button class="carousel-btn carousel-btn--next" type="button" aria-label="Siguiente">›</button>
+        </div>
+      </div>
+    </section>
 
-  <!-- Script para toggle del formulario de configuración -->
-  <script>
-    const btnConfig = document.getElementById('btn-config');
-    const configForm = document.getElementById('config-form');
+    <!-- ============ TESTIMONIOS ============ -->
+    <section class="section">
+      <div class="app-container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Reseñas reales</span>
+          <h2>Lo que dicen los estudiantes</h2>
+        </div>
+        <div class="carousel">
+          <button class="carousel-btn carousel-btn--prev" type="button" aria-label="Anterior">‹</button>
+          <div class="carousel-track" id="testimonios"></div>
+          <button class="carousel-btn carousel-btn--next" type="button" aria-label="Siguiente">›</button>
+        </div>
+      </div>
+    </section>
 
-    btnConfig.addEventListener('click', () => {
-      const isHidden = configForm.classList.contains('hidden');
-      configForm.classList.toggle('hidden');
-      btnConfig.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
-      btnConfig.textContent = isHidden ? 'Cerrar' : 'Configuración';
-    });
-  </script>
+    <!-- ============ CTA ============ -->
+    <section class="section--tight">
+      <div class="app-container">
+        <div class="panel reveal" style="text-align:center;background:linear-gradient(135deg,var(--color-primary),var(--color-secondary));color:#fff;border:none">
+          <h2 style="font-size:var(--font-size-h1)">¿Enseñas algo? Cóbralo.</h2>
+          <p style="margin:.5rem auto 1.25rem;max-width:52ch;opacity:.95">Publica tu tutoría gratis, define tu precio por hora y recibe reservas de estudiantes de todo el país.</p>
+          <div class="row" style="justify-content:center">
+            <a class="btn btn-lg" style="background:#fff;color:var(--color-primary)" href="pages/registro.html">Crear cuenta de tutor</a>
+            <a class="btn btn-lg btn-outline" style="color:#fff;border-color:rgba(255,255,255,.6)" href="pages/ayuda.html">Cómo funciona el pago</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <div id="site-footer"></div>
+  <div id="site-tabbar"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

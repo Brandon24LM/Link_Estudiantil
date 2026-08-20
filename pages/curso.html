@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle del curso · Link Estudiantil</title>
+  <meta name="description" content="Lecciones, progreso e inscripción al curso.">
+  <link rel="icon" href="../assets/logo.png">
+
+  <!-- Tailwind CSS (CDN) + configuración con los tokens del UI Kit -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/tailwind-config.js"></script>
+
+  <!-- Tipografía Inter (UI Kit) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="curso">
+
+  <div id="site-header"></div>
+
+  <main class="app-container">
+    <div class="page-head"><a class="link-more" href="cursos.html">‹ Volver al catálogo</a></div>
+
+    <div class="home-columns">
+      <section>
+        <div class="panel" style="margin:0">
+          <div id="c-portada"></div>
+          <h1 class="page-title" style="margin-top:1rem" id="c-titulo">Curso</h1>
+          <p class="muted">Con <strong id="c-tutor"></strong></p>
+          <div class="row" id="c-meta" style="margin-top:.75rem"></div>
+
+          <p class="filters-label" style="margin-top:1.5rem">Tu progreso</p>
+          <div class="progress-bar"><span id="c-progreso-bar" style="width:0"></span></div>
+          <p class="hint" style="margin-top:.35rem" id="c-progreso-txt">0% completado</p>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title" style="margin-bottom:1rem">Lecciones</h2>
+          <ul id="c-lecciones"></ul>
+        </div>
+
+        <div class="panel">
+          <h2 class="panel-title" style="margin-bottom:1rem">También te puede servir</h2>
+          <div class="card-grid card-grid--sm" id="c-relacionados"></div>
+        </div>
+      </section>
+
+      <aside>
+        <section class="panel" style="margin:0;text-align:center">
+          <div class="progress-circle" id="c-anillo" data-progress="0" style="margin:0 auto 1rem;width:96px;height:96px">
+            <span class="progress-value" style="font-size:var(--font-size-subtitle)">0%</span>
+          </div>
+          <p class="price" style="font-size:var(--font-size-h1)" id="c-precio">$0</p>
+          <p class="hint">Pago único · acceso permanente</p>
+          <button class="btn btn-primary w-full" id="btn-inscribir" style="margin-top:1rem" type="button">Inscribirme</button>
+          <a class="btn btn-outline w-full" href="tutores.html" style="margin-top:.5rem">Prefiero clase en vivo</a>
+        </section>
+
+        <section class="panel">
+          <h3 class="panel-title">Incluye</h3>
+          <ul class="stack" style="margin-top:.75rem">
+            <li>✓ Videos y material descargable</li>
+            <li>✓ Ejercicios resueltos</li>
+            <li>✓ Chat directo con el tutor</li>
+            <li>✓ Certificado al terminar</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="site-tabbar"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

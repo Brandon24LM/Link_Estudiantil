@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión · Link Estudiantil</title>
+  <meta name="description" content="Inicia sesión en Link Estudiantil.">
+  <link rel="icon" href="../assets/logo.png">
+
+  <!-- Tailwind CSS (CDN) + configuración con los tokens del UI Kit -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../js/tailwind-config.js"></script>
+
+  <!-- Tipografía Inter (UI Kit) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body data-page="login">
+
+  <div id="site-header"></div>
+
+  <main class="auth-layout">
+    <aside class="auth-side">
+      <span class="eyebrow" style="color:#a5d8ff">Bienvenido de vuelta</span>
+      <h2>Tu próxima sesión está a un clic.</h2>
+      <p style="opacity:.9">Entra para ver tus cursos, tus mensajes y la agenda de la semana.</p>
+      <ul>
+        <li>✓ <span>Tus cursos y tu progreso guardados</span></li>
+        <li>✓ <span>Recordatorios de cada sesión</span></li>
+        <li>✓ <span>Chat con tus tutores</span></li>
+      </ul>
+    </aside>
+
+    <section class="auth-main">
+      <div class="auth-card">
+        <h1 class="page-title">Iniciar sesión</h1>
+        <p class="muted" style="margin-bottom:1.25rem">Usa una cuenta demo o la tuya, si ya te registraste.</p>
+
+        <form id="form-login" class="panel" novalidate>
+          <div class="form-group">
+            <label for="correo">Correo</label>
+            <input type="email" id="correo" name="correo" placeholder="estudiante@link.edu" autocomplete="email" required>
+          </div>
+          <div class="form-group">
+            <label for="clave">Contraseña</label>
+            <input type="password" id="clave" name="clave" placeholder="••••••" autocomplete="current-password" required>
+          </div>
+          <p class="error-message hidden" id="login-error"></p>
+          <button class="btn btn-primary w-full" type="submit">Entrar</button>
+          <p class="hint text-center" style="margin-top:.75rem">¿No tienes cuenta? <a href="registro.html">Crear una</a></p>
+        </form>
+
+        <div class="panel">
+          <p class="filters-label">Cuentas demo</p>
+          <div class="stack" id="demo-users"></div>
+          <p class="hint" style="margin-top:.75rem">Contraseña de todas: <strong>123456</strong>. Toca una tarjeta para llenar el formulario.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+  <div id="site-tabbar"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>
