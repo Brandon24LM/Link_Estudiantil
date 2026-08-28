@@ -110,6 +110,58 @@ function cargarImagenes(ctx = document) {
 }
 
 /* ------------------------------------------------------------
+   2b. Validación de formularios con mensajes concretos
+   (cada mensaje dice QUÉ pasó y QUÉ hacer, no solo "campo inválido")
+------------------------------------------------------------ */
+function errorCampo(input, mensaje) {
+  const grupo = input.closest('.form-group') || input.parentElement;
+  grupo.classList.add('has-error');
+  input.setAttribute('aria-invalid', 'true');
+  let p = grupo.querySelector('.field-error');
+  if (!p) {
+    p = document.createElement('p');
+    p.className = 'field-error';
+    p.id = (input.id || 'campo') + '-error';
+    p.setAttribute('role', 'alert');
+    grupo.appendChild(p);
+  }
+  p.textContent = mensaje;
+  input.setAttribute('aria-describedby', p.id);
+  return false;
+}
+function limpiarErrores(form) {
+  $$('.has-error', form).forEach(g => g.classList.remove('has-error'));
+  $$('.field-error', form).forEach(p => p.remove());
+  $$('[aria-invalid]', form).forEach(i => { i.removeAttribute('aria-invalid'); i.removeAttribute('aria-describedby'); });
+  const g = $('.error-message', form); if (g) { g.textContent = ''; g.classList.add('hidden'); }
+}
+function errorGeneral(form, mensaje) {
+  const g = $('.error-message', form);
+  if (g) { g.textContent = mensaje; g.classList.remove('hidden'); g.setAttribute('role', 'alert'); }
+  return false;
+}
+/* Devuelve el problema exacto del correo, o null si está bien */
+function problemaCorreo(v) {
+  v = (v || '').trim();
+  if (!v) return 'Escribe tu correo para continuar.';
+  if (/\s/.test(v)) return 'El correo no puede llevar espacios. Bórralos e inténtalo de nuevo.';
+  if (!v.includes('@')) return 'Al correo le falta el signo @. Debe verse así: nombre@correo.com';
+  const partes = v.split('@');
+  if (partes.length > 2) return 'El correo tiene más de un signo @. Deja solo uno.';
+  const [usuario, dominio] = partes;
+  if (!usuario) return 'Falta el nombre antes del @. Debe verse así: nombre@correo.com';
+  if (!dominio) return 'Falta el dominio después del @. Debe verse así: nombre@correo.com';
+  if (!dominio.includes('.')) return 'Al dominio "' + dominio + '" le falta la terminación (.com, .edu, .ec…).';
+  if (!/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/.test(v)) return 'Revisa el correo: tiene caracteres que no se permiten.';
+  return null;
+}
+/* Enfoca el primer campo con error para que el usuario no lo busque */
+function enfocarPrimerError(form) {
+  const primero = $('[aria-invalid="true"]', form);
+  if (primero) primero.focus();
+}
+
+/* ------------------------------------------------------------
    3. Header, menú lateral, tabbar y footer
 ------------------------------------------------------------ */
 const NAV_PUBLICO = [
@@ -143,6 +195,7 @@ function montarHeader() {
   const sinLeer = u ? DATA.mensajes.filter(m => !m.leido).length : 0;
 
   cont.innerHTML = `
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="app-header">
     <div class="header-inner">
       <a class="brand" href="${u ? R('inicio.html') : R('index.html')}" aria-label="Link Estudiantil, ir al inicio">
@@ -151,7 +204,7 @@ function montarHeader() {
       </a>
 
       <nav class="main-nav" aria-label="Navegación principal">
-        ${nav.map(n => `<a class="nav-link ${aqui === n.href ? 'is-active' : ''}" href="${R(n.href)}">${ICONS[n.ico]}<span>${n.txt}</span></a>`).join('')}
+        ${nav.map(n => `<a class="nav-link ${aqui === n.href ? 'is-active' : ''}" href="${R(n.href)}" ${aqui === n.href ? 'aria-current="page"' : ''}>${ICONS[n.ico]}<span>${n.txt}</span></a>`).join('')}
       </nav>
 
       <div class="header-actions">
@@ -217,13 +270,17 @@ function montarTabbar() {
   const cont = $('#site-tabbar'); if (!cont) return;
   const u = Auth.actual(); const aqui = archivoActual();
   cont.innerHTML = `<nav class="mobile-tabbar" aria-label="Navegación inferior">
-    ${TABBAR(u).map(n => `<a class="tabbar-link ${aqui === n.href ? 'is-active' : ''}" href="${R(n.href)}">${ICONS[n.ico]}<span>${n.txt}</span></a>`).join('')}
+    ${TABBAR(u).map(n => `<a class="tabbar-link ${aqui === n.href ? 'is-active' : ''}" href="${R(n.href)}" ${aqui === n.href ? 'aria-current="page"' : ''}>${ICONS[n.ico]}<span>${n.txt}</span></a>`).join('')}
   </nav>`;
 }
 
 function montarFooter() {
   const cont = $('#site-footer'); if (!cont) return;
-  const redes = ['Instagram', 'Facebook', 'X', 'LinkedIn', 'YouTube', 'TikTok'];
+  const redes = [
+    ['Instagram', 'https://www.instagram.com'], ['Facebook', 'https://www.facebook.com'],
+    ['X', 'https://x.com'], ['LinkedIn', 'https://www.linkedin.com'],
+    ['YouTube', 'https://www.youtube.com'], ['TikTok', 'https://www.tiktok.com']
+  ];
   cont.innerHTML = `
   <footer class="site-footer">
     <div class="footer-inner">
@@ -231,25 +288,25 @@ function montarFooter() {
         <span class="brand"><span class="brand-logo"></span><span class="logo-text">Link<span>Estudiantil</span></span></span>
         <p style="margin-top:.75rem;max-width:34ch">Conectamos estudiantes con tutores verificados. Reserva una sesión, sigue tu curso y aprende a tu ritmo.</p>
         <div class="social-links" style="margin-top:1rem">
-          ${redes.map(r => `<a class="social-link" href="#" aria-label="${r}" title="${r}">${r[0]}</a>`).join('')}
+          ${redes.map(([nombre, url]) => `<a class="social-link" href="${url}" target="_blank" rel="noopener" title="Link Estudiantil en ${nombre}"><span aria-hidden="true">${nombre[0]}</span><span class="sr-only">Link Estudiantil en ${nombre}</span></a>`).join('')}
         </div>
       </div>
       <div>
-        <h4>Plataforma</h4>
+        <h3>Plataforma</h3>
         <a href="${R('tutores.html')}">Buscar tutores</a>
         <a href="${R('cursos.html')}">Cursos</a>
         <a href="${R('sesiones.html')}">Sesiones</a>
         <a href="${R('publicar.html')}">Publicar tutoría</a>
       </div>
       <div>
-        <h4>Cuenta</h4>
+        <h3>Cuenta</h3>
         <a href="${R('login.html')}">Iniciar sesión</a>
         <a href="${R('registro.html')}">Crear cuenta</a>
         <a href="${R('perfil.html')}">Mi perfil</a>
         <a href="${R('confianza.html')}">Verificación</a>
       </div>
       <div>
-        <h4>Soporte</h4>
+        <h3>Soporte</h3>
         <a href="${R('ayuda.html')}">Centro de ayuda</a>
         <a href="${R('ayuda.html')}#contacto">Contacto</a>
         <a href="${R('ayuda.html')}#faq">Preguntas frecuentes</a>
@@ -267,7 +324,7 @@ function montarFooter() {
 ------------------------------------------------------------ */
 function toast(msg, tipo = '') {
   let stack = $('.toast-stack');
-  if (!stack) { stack = document.createElement('div'); stack.className = 'toast-stack'; document.body.appendChild(stack); }
+  if (!stack) { stack = document.createElement('div'); stack.className = 'toast-stack'; stack.setAttribute('aria-live', 'polite'); document.body.appendChild(stack); }
   const t = document.createElement('div');
   t.className = 'toast ' + (tipo ? 'toast--' + tipo : '');
   t.setAttribute('role', 'status');
@@ -442,13 +499,27 @@ const Paginas = {
       }));
     }
 
-    $('#form-login').addEventListener('submit', e => {
+    const form = $('#form-login');
+    form.addEventListener('submit', e => {
       e.preventDefault();
-      const correo = $('#correo').value.trim(), clave = $('#clave').value;
-      const err = $('#login-error');
+      limpiarErrores(form);
+      const campoCorreo = $('#correo'), campoClave = $('#clave');
+      const correo = campoCorreo.value.trim(), clave = campoClave.value;
+
+      const malCorreo = problemaCorreo(correo);
+      if (malCorreo) { errorCampo(campoCorreo, malCorreo); enfocarPrimerError(form); return; }
+      if (!clave) { errorCampo(campoClave, 'Escribe tu contraseña. La de las cuentas demo es 123456.'); enfocarPrimerError(form); return; }
+
+      const cuenta = Auth.todos().find(x => x.correo.toLowerCase() === correo.toLowerCase());
+      if (!cuenta) {
+        errorCampo(campoCorreo, 'No existe ninguna cuenta con ese correo. Revisa que esté bien escrito o crea una cuenta nueva.');
+        enfocarPrimerError(form); return;
+      }
       const u = Auth.entrar(correo, clave);
-      if (!u) { err.textContent = 'Correo o contraseña incorrectos. Prueba con una cuenta demo.'; err.classList.remove('hidden'); return; }
-      err.classList.add('hidden');
+      if (!u) {
+        errorCampo(campoClave, 'La contraseña no coincide con la cuenta de ' + cuenta.nombre + '. Vuelve a escribirla.');
+        campoClave.value = ''; enfocarPrimerError(form); return;
+      }
       toast('Hola de nuevo, ' + u.nombre.split(' ')[0], 'ok');
       setTimeout(() => location.href = param('next') || 'inicio.html', 600);
     });
@@ -456,24 +527,24 @@ const Paginas = {
 
   /* ---------- Registro ---------- */
   registro() {
-    $('#form-registro').addEventListener('submit', e => {
+    const form = $('#form-registro');
+    form.addEventListener('submit', e => {
       e.preventDefault();
-      const nombre = $('#r-nombre').value.trim();
-      const correo = $('#r-correo').value.trim();
-      const clave  = $('#r-clave').value;
-      const clave2 = $('#r-clave2').value;
-      const rol    = $('#r-rol').value;
-      const err = $('#registro-error');
-      const fallar = (m) => { err.textContent = m; err.classList.remove('hidden'); };
+      limpiarErrores(form);
+      const cNombre = $('#r-nombre'), cCorreo = $('#r-correo'), cClave = $('#r-clave'), cClave2 = $('#r-clave2');
+      const nombre = cNombre.value.trim(), correo = cCorreo.value.trim();
+      const clave = cClave.value, clave2 = cClave2.value, rol = $('#r-rol').value;
 
-      if (nombre.length < 4) return fallar('Escribe tu nombre completo.');
-      if (!/^\S+@\S+\.\S+$/.test(correo)) return fallar('Ese correo no tiene un formato válido.');
-      if (clave.length < 6) return fallar('La contraseña necesita al menos 6 caracteres.');
-      if (clave !== clave2) return fallar('Las contraseñas no coinciden.');
+      if (!nombre) { errorCampo(cNombre, 'Escribe tu nombre. Lo verán los tutores al reservar.'); return enfocarPrimerError(form); }
+      if (nombre.split(/\s+/).length < 2) { errorCampo(cNombre, 'Falta el apellido. Escribe nombre y apellido, por ejemplo: Brandon Lozano.'); return enfocarPrimerError(form); }
+      const malCorreo = problemaCorreo(correo);
+      if (malCorreo) { errorCampo(cCorreo, malCorreo); return enfocarPrimerError(form); }
+      if (!clave) { errorCampo(cClave, 'Falta la contraseña. Debe tener 6 caracteres o más.'); return enfocarPrimerError(form); }
+      if (clave.length < 6) { errorCampo(cClave, 'La contraseña tiene ' + clave.length + ' caracteres y necesita al menos 6. Agrega ' + (6 - clave.length) + ' más.'); return enfocarPrimerError(form); }
+      if (clave !== clave2) { errorCampo(cClave2, 'Las dos contraseñas no son iguales. Vuelve a escribir la repetición.'); cClave2.value = ''; return enfocarPrimerError(form); }
 
       const res = Auth.registrar({ nombre, correo, clave, rol });
-      if (res.error) return fallar(res.error);
-      err.classList.add('hidden');
+      if (res.error) { errorCampo(cCorreo, res.error); return enfocarPrimerError(form); }
       toast('Cuenta creada. Bienvenido a Link Estudiantil.', 'ok');
       setTimeout(() => location.href = 'inicio.html', 700);
     });
@@ -613,7 +684,15 @@ const Paginas = {
 
     $('#btn-reservar').addEventListener('click', () => {
       if (!Auth.actual()) { location.href = R('login.html') + '?next=' + encodeURIComponent('tutor.html?id=' + t.id); return; }
-      if (!horaElegida) { toast('Elige un horario disponible', 'error'); return; }
+      if (!horaElegida) {
+        const aviso = $('#slots-error') || Object.assign(document.createElement('p'), { id: 'slots-error', className: 'field-error' });
+        aviso.setAttribute('role', 'alert');
+        aviso.textContent = 'Falta elegir la hora. Toca uno de los horarios de arriba que no esté tachado.';
+        $('#slots').after(aviso);
+        $('#slots .slot:not([disabled])').focus();
+        return;
+      }
+      const avisoViejo = $('#slots-error'); if (avisoViejo) avisoViejo.remove();
       const fecha = $('#fecha').value;
       abrirModal('Confirmar reserva', `
         <p>Vas a reservar una sesión de <strong>${t.materia}</strong> con <strong>${t.nombre}</strong>.</p>
@@ -950,7 +1029,26 @@ const Paginas = {
 
     $('#form-publicar').addEventListener('submit', e => {
       e.preventDefault();
-      if (!horarios.size) { toast('Elige al menos un horario', 'error'); return; }
+      limpiarErrores(e.target);
+      const cTitulo = $('#p-titulo'), cPrecio = $('#p-precio'), cDesc = $('#p-desc');
+      if (cTitulo.value.trim().length < 10) {
+        errorCampo(cTitulo, 'El título es muy corto. Escribe al menos 10 caracteres que digan qué enseñas, por ejemplo: "Cálculo diferencial desde cero".');
+        return enfocarPrimerError(e.target);
+      }
+      const precio = Number(cPrecio.value);
+      if (!precio || precio < 1 || precio > 200) {
+        errorCampo(cPrecio, 'El precio por hora debe estar entre $1 y $200. Escribiste "' + cPrecio.value + '".');
+        return enfocarPrimerError(e.target);
+      }
+      if (cDesc.value.trim().length < 20) {
+        errorCampo(cDesc, 'La descripción necesita al menos 20 caracteres. Cuenta cómo enseñas y para quién es la tutoría.');
+        return enfocarPrimerError(e.target);
+      }
+      if (!horarios.size) {
+        toast('Falta elegir horarios: toca al menos una hora de la lista.', 'error');
+        $('#p-horarios .slot').focus();
+        return;
+      }
       const nueva = {
         id: 't' + Date.now(), nombre: (Auth.actual() || {}).nombre || 'Tutor demo',
         materia: $('#p-materia').value, titulo: $('#p-titulo').value, precio: Number($('#p-precio').value),
@@ -1000,10 +1098,32 @@ const Paginas = {
         <div class="accordion-panel ${i === 0 ? '' : 'hidden'}">${f.r}</div>
       </div>`).join('');
     initAcordeones();
-    $('#form-contacto').addEventListener('submit', e => {
-      e.preventDefault(); e.target.reset();
-      toast('Mensaje enviado. Te respondemos en 24 h.', 'ok');
+    const form = $('#form-contacto');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      limpiarErrores(form);
+      const cNombre = $('#a-nombre'), cCorreo = $('#a-correo'), cMsg = $('#a-msg');
+
+      if (!cNombre.value.trim()) { errorCampo(cNombre, 'Escribe tu nombre para saber quién nos escribe.'); return enfocarPrimerError(form); }
+      const malCorreo = problemaCorreo(cCorreo.value);
+      if (malCorreo) { errorCampo(cCorreo, malCorreo + ' Lo necesitamos para responderte.'); return enfocarPrimerError(form); }
+      const largo = cMsg.value.trim().length;
+      if (!largo) { errorCampo(cMsg, 'Cuéntanos qué pasó. Sin el mensaje no podemos ayudarte.'); return enfocarPrimerError(form); }
+      if (largo < 15) { errorCampo(cMsg, 'El mensaje es muy corto (' + largo + ' caracteres). Escribe al menos 15 explicando qué ocurrió.'); return enfocarPrimerError(form); }
+
+      form.reset();
+      toast('Mensaje enviado. Te respondemos en menos de 24 horas.', 'ok');
     });
+    /* El error se limpia en cuanto el usuario corrige el campo */
+    $$('#form-contacto input, #form-contacto textarea').forEach(c =>
+      c.addEventListener('input', () => {
+        const g = c.closest('.form-group');
+        if (g && g.classList.contains('has-error')) {
+          g.classList.remove('has-error');
+          const p = g.querySelector('.field-error'); if (p) p.remove();
+          c.removeAttribute('aria-invalid');
+        }
+      }));
   }
 };
 

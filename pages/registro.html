@@ -22,10 +22,10 @@
 
   <div id="site-header"></div>
 
-  <main class="auth-layout">
+  <main id="contenido" tabindex="-1" class="auth-layout">
     <aside class="auth-side">
       <span class="eyebrow" style="color:#a5d8ff">Es gratis</span>
-      <h2>Crea tu cuenta y empieza hoy.</h2>
+      <p class="auth-claim">Crea tu cuenta y empieza hoy.</p>
       <p style="opacity:.9">Como estudiante reservas sesiones. Como tutor publicas las tuyas y cobras por hora.</p>
       <ul>
         <li>✓ <span>Sin costo de registro</span></li>
@@ -40,22 +40,25 @@
         <p class="muted" style="margin-bottom:1.25rem">Los datos se guardan solo en este navegador.</p>
 
         <form id="form-registro" class="panel" novalidate>
+          <p class="hint" style="margin-bottom:1rem">Todos los campos son obligatorios.</p>
           <div class="form-group">
             <label for="r-nombre">Nombre completo</label>
-            <input id="r-nombre" placeholder="Brandon Lozano" autocomplete="name" required>
+            <input id="r-nombre" placeholder="Nombre y apellido" autocomplete="name" required aria-describedby="ayuda-nombre">
+            <p class="hint" id="ayuda-nombre">Así te verán los tutores. Ejemplo: Brandon Lozano</p>
           </div>
           <div class="form-group">
             <label for="r-correo">Correo</label>
-            <input type="email" id="r-correo" placeholder="tu@correo.com" autocomplete="email" required>
+            <input type="email" id="r-correo" placeholder="nombre@correo.com" autocomplete="email" required aria-describedby="ayuda-rcorreo">
+            <p class="hint" id="ayuda-rcorreo">Con este correo inicias sesión después.</p>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label for="r-clave">Contraseña</label>
-              <input type="password" id="r-clave" placeholder="Mínimo 6 caracteres" autocomplete="new-password" required>
+              <input type="password" id="r-clave" placeholder="Mínimo 6 caracteres" autocomplete="new-password" minlength="6" required>
             </div>
             <div class="form-group">
               <label for="r-clave2">Repite la contraseña</label>
-              <input type="password" id="r-clave2" autocomplete="new-password" required>
+              <input type="password" id="r-clave2" placeholder="Escríbela otra vez" autocomplete="new-password" required>
             </div>
           </div>
           <div class="progress-bar" id="fuerza"><span data-value="0" style="width:0"></span></div>

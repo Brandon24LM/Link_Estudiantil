@@ -22,18 +22,18 @@
 
   <div id="site-header"></div>
 
-  <main class="app-container">
+  <main id="contenido" tabindex="-1" class="app-container">
     <div class="page-head">
       <h1 class="page-title">Publicar tutoría</h1>
       <p>Completa los datos. Puedes editarlos cuando quieras.</p>
     </div>
 
     <div class="home-columns" style="grid-template-columns:1fr 320px">
-      <form class="panel" id="form-publicar" style="margin:0">
+      <form class="panel" id="form-publicar" style="margin:0" novalidate>
         <div class="form-group">
           <label for="p-titulo">Título de la tutoría</label>
           <input id="p-titulo" placeholder="Cálculo diferencial sin sufrir" required>
-          <p class="hint">Di qué resuelves, no solo el nombre de la materia.</p>
+          <p class="hint">Mínimo 10 caracteres. Di qué resuelves, no solo el nombre de la materia.</p>
         </div>
 
         <div class="form-row">
@@ -46,14 +46,16 @@
           <div class="form-group"><label for="p-modalidad">Modalidad</label>
             <select id="p-modalidad"><option>Virtual</option><option>Presencial</option><option>Híbrido</option></select></div>
           <div class="form-group"><label for="p-precio">Precio por hora (USD)</label>
-            <input type="number" id="p-precio" min="1" max="200" value="10" required></div>
+            <input type="number" id="p-precio" min="1" max="200" step="1" value="10" required aria-describedby="ayuda-precio">
+            <p class="hint" id="ayuda-precio">Entre $1 y $200.</p></div>
         </div>
 
         <div class="form-group"><label for="p-ciudad">Ciudad</label><input id="p-ciudad" value="Quito"></div>
 
         <div class="form-group">
           <label for="p-desc">Descripción</label>
-          <textarea id="p-desc" rows="4" placeholder="Cómo enseñas, qué material usas, para quién es esta tutoría."></textarea>
+          <textarea id="p-desc" rows="4" placeholder="Cómo enseñas, qué material usas, para quién es esta tutoría." aria-describedby="ayuda-desc"></textarea>
+          <p class="hint" id="ayuda-desc">Mínimo 20 caracteres.</p>
         </div>
 
         <p class="filters-label">Horarios disponibles</p>

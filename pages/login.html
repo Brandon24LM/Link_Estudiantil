@@ -22,10 +22,10 @@
 
   <div id="site-header"></div>
 
-  <main class="auth-layout">
+  <main id="contenido" tabindex="-1" class="auth-layout">
     <aside class="auth-side">
       <span class="eyebrow" style="color:#a5d8ff">Bienvenido de vuelta</span>
-      <h2>Tu próxima sesión está a un clic.</h2>
+      <p class="auth-claim">Tu próxima sesión está a un clic.</p>
       <p style="opacity:.9">Entra para ver tus cursos, tus mensajes y la agenda de la semana.</p>
       <ul>
         <li>✓ <span>Tus cursos y tu progreso guardados</span></li>
@@ -40,13 +40,16 @@
         <p class="muted" style="margin-bottom:1.25rem">Usa una cuenta demo o la tuya, si ya te registraste.</p>
 
         <form id="form-login" class="panel" novalidate>
+          <p class="hint" style="margin-bottom:1rem">Los dos campos son obligatorios.</p>
           <div class="form-group">
             <label for="correo">Correo</label>
-            <input type="email" id="correo" name="correo" placeholder="estudiante@link.edu" autocomplete="email" required>
+            <input type="email" id="correo" name="correo" placeholder="nombre@correo.com" autocomplete="email" required aria-describedby="ayuda-correo">
+            <p class="hint" id="ayuda-correo">Ejemplo: estudiante@link.edu</p>
           </div>
           <div class="form-group">
             <label for="clave">Contraseña</label>
-            <input type="password" id="clave" name="clave" placeholder="••••••" autocomplete="current-password" required>
+            <input type="password" id="clave" name="clave" placeholder="Tu contraseña" autocomplete="current-password" required aria-describedby="ayuda-clave">
+            <p class="hint" id="ayuda-clave">La de las cuentas demo es 123456.</p>
           </div>
           <p class="error-message hidden" id="login-error"></p>
           <button class="btn btn-primary w-full" type="submit">Entrar</button>

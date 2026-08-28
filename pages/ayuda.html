@@ -22,7 +22,7 @@
 
   <div id="site-header"></div>
 
-  <main class="app-container">
+  <main id="contenido" tabindex="-1" class="app-container">
     <div class="page-head">
       <h1 class="page-title">Centro de ayuda</h1>
       <p>Lo que más nos preguntan, y cómo escribirnos si falta algo.</p>
@@ -32,13 +32,15 @@
       <section id="faq"></section>
 
       <aside id="contacto">
-        <form class="panel" id="form-contacto" style="margin:0">
+        <form class="panel" id="form-contacto" style="margin:0" novalidate>
           <h2 class="panel-title" style="margin-bottom:1rem">Escríbenos</h2>
-          <div class="form-group"><label for="a-nombre">Nombre</label><input id="a-nombre" required></div>
-          <div class="form-group"><label for="a-correo">Correo</label><input type="email" id="a-correo" required></div>
+          <div class="form-group"><label for="a-nombre">Nombre</label><input id="a-nombre" placeholder="Nombre y apellido" autocomplete="name" required></div>
+          <div class="form-group"><label for="a-correo">Correo</label><input type="email" id="a-correo" placeholder="nombre@correo.com" autocomplete="email" required aria-describedby="ayuda-acorreo">
+            <p class="hint" id="ayuda-acorreo">A este correo llega nuestra respuesta.</p></div>
           <div class="form-group"><label for="a-tema">Tema</label>
             <select id="a-tema"><option>Problema con una sesión</option><option>Pago o factura</option><option>Verificación de cuenta</option><option>Otro</option></select></div>
-          <div class="form-group"><label for="a-msg">Mensaje</label><textarea id="a-msg" rows="4" required></textarea></div>
+          <div class="form-group"><label for="a-msg">Mensaje</label><textarea id="a-msg" rows="4" placeholder="Cuéntanos qué pasó: en qué pantalla, qué intentabas hacer y qué viste." required aria-describedby="ayuda-amsg"></textarea>
+            <p class="hint" id="ayuda-amsg">Mínimo 15 caracteres. Mientras más detalle, más rápido te ayudamos.</p></div>
           <button class="btn btn-primary w-full" type="submit">Enviar mensaje</button>
         </form>
 

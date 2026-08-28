@@ -22,7 +22,7 @@
 
   <div id="site-header"></div>
 
-  <main class="app-container">
+  <main id="contenido" tabindex="-1" class="app-container">
     <div class="page-head">
       <h1 class="page-title">Buscar Tutores</h1>
       <p>Filtra hasta encontrar al que encaja con tu horario y tu presupuesto.</p>
@@ -57,7 +57,7 @@
 
     <div class="spread" style="margin:1.5rem 0 .75rem">
       <h2>Resultados</h2>
-      <span class="results-count" id="contador"></span>
+      <span class="results-count" id="contador" aria-live="polite"></span>
     </div>
     <div class="card-grid card-grid--lg" id="resultados"></div>
 
