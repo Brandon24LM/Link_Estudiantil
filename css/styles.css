@@ -348,8 +348,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .hero-lead { font-size: var(--font-size-subtitle); color: var(--color-muted); max-width: 48ch; }
 .hero-cta { display: flex; gap: var(--space-xs); flex-wrap: wrap; margin-top: var(--space-md); }
 .hero-stats { display: flex; gap: var(--space-lg); margin-top: var(--space-lg); flex-wrap: wrap; }
-.stat-value { font-size: var(--font-size-h2); font-weight: 800; color: var(--color-primary); }
-.stat-label { font-size: var(--font-size-small); color: var(--color-muted); }
+.stat-value { display: block; font-size: var(--font-size-h2); font-weight: 800; color: var(--color-primary); }
+.stat-label { display: block; font-size: var(--font-size-small); color: var(--color-muted); }
 .hero-art { position: relative; }
 .hero-art .floating-card {
   position: absolute; background: #fff; border: 1px solid var(--color-border);

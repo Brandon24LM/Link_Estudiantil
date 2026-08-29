@@ -2,9 +2,26 @@
 
 Plataforma web de tutorías: los estudiantes buscan y reservan clases con tutores verificados, y los tutores publican sus tutorías, ponen su precio por hora y abren horarios. Además hay cursos grabados para avanzar a tu propio ritmo.
 
-Todo está hecho con **HTML, CSS y JavaScript puro** (más Tailwind por CDN). No hay backend ni base de datos: los usuarios, sesiones, tareas y el progreso se guardan en el navegador con `localStorage`.
-
 ---
+
+## Tecnologías
+
+- HTML5 semántico
+- CSS3 (variables, grid, flexbox, `conic-gradient`, animaciones)
+- JavaScript (ES6, sin librerías ni frameworks)
+- Tailwind CSS por CDN
+- Google Fonts (Inter)
+- `localStorage` como almacenamiento
+- Git y GitHub Pages
+
+## Integrantes
+
+- Brandon Lozano
+- Alisson Mediavilla
+- Christopher Villagómez
+
+Proyecto académico — Pontificia Universidad Católica del Ecuador.
+
 
 ## Demo
 
@@ -82,23 +99,8 @@ Las páginas marcadas con "Sí" redirigen al login si no hay sesión, y vuelven 
 └── README.md
 ```
 
-Las páginas de `pages/` cargan los recursos con `../css/`, `../js/` y `../assets/`. Entre ellas se enlazan con el nombre del archivo a secas (`tutores.html`), porque son vecinas.
-
-El header, el menú lateral, la barra inferior de celular y el footer se generan desde `app.js`, así que la navegación es igual en todas las páginas y se cambia en un solo lugar. Ahí hay dos ayudantes que resuelven las rutas según dónde estés:
-
-```js
-const EN_PAGES = /\/pages\//.test(location.pathname);
-const R = (archivo) => archivo === 'index.html'
-  ? (EN_PAGES ? '../index.html' : 'index.html')
-  : (EN_PAGES ? archivo : 'pages/' + archivo);
-const A = (ruta) => (EN_PAGES ? '../' + ruta : ruta);
-```
-
-Si agregas una página nueva, guárdala en `pages/`, copia el `<head>` de cualquiera de ellas y súmala al arreglo `NAV_PUBLICO` o `NAV_PRIVADO` de `app.js`.
 
 ## Imágenes (carpeta `assets/`)
-
-Mientras una imagen no exista, se muestra un **placeholder con el nombre del archivo**; apenas subes la imagen con ese nombre, aparece sola sin tocar el código.
 
 ```
 assets/
@@ -114,7 +116,6 @@ assets/
 └── usuarios/                # brandon.jpg, alisson.jpg, christopher.jpg, ana.jpg, diego.jpg, maria.jpg
 ```
 
-Los nombres exactos están en `js/data.js`, en el campo `img` de cada elemento.
 
 ## Diseño (UI Kit)
 
@@ -140,34 +141,6 @@ Puntos de corte: 1100, 960, 760, 700 y 480 px.
 - **Tablet:** el menú deja solo los íconos y las columnas se apilan.
 - **Celular (≤700 px):** el menú se va abajo como barra fija de 5 accesos, igual que en el wireframe, y el resto del menú vive en el panel lateral.
 
-También respeta `prefers-reduced-motion` y tiene foco visible con teclado.
-
----
-
-## Cómo ejecutarlo
-
-**Opción rápida:** abre `index.html` con doble clic. Todo funciona porque no hay servidor.
-
-**Con servidor local** (recomendado, evita rarezas del navegador con archivos locales):
-
-```bash
-python3 -m http.server 8000
-# abre http://localhost:8000
-```
-
-## Publicar en GitHub Pages
-
-Sí, funciona en GitHub Pages tal cual: es un sitio estático, todas las rutas son relativas y no hay nada que compilar.
-
-1. Sube la carpeta al repositorio (con `index.html` en la raíz).
-2. En GitHub: **Settings → Pages**.
-3. En *Source* elige **Deploy from a branch**, rama `main` y carpeta `/ (root)`.
-4. Guarda y espera un minuto. La URL queda como `https://<tu-usuario>.github.io/<tu-repo>/`.
-
-Dos cosas a tener en cuenta:
-
-- Los nombres de archivo distinguen mayúsculas: `Assets/Logo.PNG` no es lo mismo que `assets/logo.png`.
-- El archivo `.nojekyll` ya está incluido para que Pages no ignore carpetas.
 
 ## Tecnologías
 
